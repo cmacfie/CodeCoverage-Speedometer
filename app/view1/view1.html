@@ -1,0 +1,61 @@
+<div class="container timelineContainer">
+    <div class="row" style="height: 150px;">
+        <div class="col-md-5 col-sm-5">
+            <h1>Capability API</h1>
+        </div>
+        <div ng-show="showInfo" class="col-md-7 col-sm-7 detailsBox">
+            <!--<div class="container">-->
+            <div class="row">
+                <h2>{{detailsBoxAPI}}</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-3 oldVersion"><b>Old Version</b></div>
+                <div class="col-md-9 col-sm-9 oldVersion"><b>Old Method</b></div>
+                <div class="col-md-3 col-sm-3 oldVersion">{{oldVersionAPI}}</div>
+                <div class="col-md-9 col-sm-9 oldVersion">{{oldVersionText}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-3 newVersion"><b>New Version</b></div>
+                <div class="col-md-9 col-sm-9 newVersion"><b>New Method</b></div>
+                <div class="col-md-3 col-sm-3
+                newVersion">{{newVersionAPI}}
+                </div>
+                <div class="col-md-9 col-sm-9 newVersion">{{newVersionText}}</div>
+            </div>
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<div class="container">
+
+    <div class="offset-md-2 offset-sm-2 col-md-10 col-sm-10" style="
+  overflow:hidden;">
+        <div class="release"
+             ng-repeat="r in releases">{{r}}
+        </div>
+    </div>
+    <div ng-repeat="versions in apis track by $index" class="row">
+        <div class="col-md-2 col-sm-2 apiName" style="top:50%; margin: auto 0;">{{versions.name}}</div>
+        <div class="col-md-10 col-sm-10 timeline">
+            <div ng-style="{'margin-left': (($index+versions.startIndex)*120) + 'px'}"
+                 ng-repeat="version in versions.data track by $index">
+                <div ng-show="version.state !== 'deprecated'" class="line" ng-class="version.state"></div>
+                <img ng-show="version.state !== 'deprecated' && version.state !== versions.data[$index-1].state"
+                     class="state-img"
+                     src="images/{{version.state}}.png">
+                <div
+                        ng-mouseenter="hoverIn(versions.data[$index-1].ver, version.oldVersionText, version.ver, version.newVersionText, versions.name)"
+                        ng-mouseleave="hoverOut()"
+                        class="form {{getForm(version.state, versions.data[$index-1].state, version.color)}}"
+                        ng-style="{'background': version.color}"
+                ></div>
+                <!--<div class="infoBox" ng-style="{'margin-left': ($index*60 - 5) + 'px'}" ng-show="showInfo">{{version-->
+                <!--.ver}}-->
+                <!--</div>-->
+                <!--{{version}}-->
+                <!--<div class="form circle">{{$index}}</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
