@@ -1,0 +1,153 @@
+body {
+    background: #333333
+}
+
+.textContainer {
+    display:inline-block;
+    width:100%;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.textContainer .percent {
+    font-size: 60px;
+    margin:0;
+}
+
+.textContainer .repo {
+    margin-bottom: 10px;
+}
+
+.shadow {
+    width:100%;
+    box-shadow: 10px 10px 5px grey;
+}
+
+.textContainer h2 {
+    font-size: 25px;
+    margin:0;
+}
+.textContainer p {
+    font-size: 15px;
+    margin:0;
+}
+
+.textHolder {
+    /*position: relative;*/
+    /*margin-top: 50px;*/
+}
+
+.gradient-pie {
+    width: 100%;
+    height: 200%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, yellow 0deg, green 90deg, red 270deg, yellow 360deg);
+}
+
+.pieHolder {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background: inherit;
+}
+
+.speedometerHolder {
+    width: 250px;
+    height: 125px;
+    position: relative;
+    margin-bottom:5%;
+    left:20%;
+    /*margin-top: 150px;*/
+    /*margin-left: 50px;*/
+    display:inline-block;
+    float: left;
+    background: inherit;
+}
+
+.metricContainer {
+    border: 1px solid white;
+    display: inline-block;
+    padding: 20px;
+    margin:5px;
+    max-width:460px;
+    /*margin: calc(5px - 2px); !* Remove margin because of inline-block*!*/
+    /*width: 250px;*/
+    /*height: 125px;*/
+    /*padding-bottom: 150px;*/
+    border-radius: 5%;
+    background: #94947f;
+}
+
+.arrowHolder {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 125px solid black;
+    left: calc(50% - 10px);
+    transform-origin: center bottom;
+    /*transform:rotate(calc(-90deg + 0.1turn));*/
+    z-index: 1;
+    position: absolute;
+    /*animation: ease-in-out animateArrow 2s;*/
+}
+
+.arrowBlack {
+    border-bottom-color: black;
+}
+
+.arrowWhite{
+    border-bottom-color: white;
+    opacity:0;
+}
+
+.arrowCircle {
+    width: 15%;
+    height: 30%;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    left: calc(50% - 7.5%);
+    z-index: 2;
+    bottom: -15%;
+}
+
+.píeMiddleCircle {
+    width: 50%;
+    height: 100%;
+    border-radius: 50%;
+    top: 50%;
+    left: 25%;
+    margin: 0 auto;
+    background: inherit;
+    position: absolute;
+}
+
+/*.pie-halfHider {*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*position: absolute;*/
+/*border-radius: 50% 50% 0 0;*/
+/*background-image: linear-gradient(to bottom, transparent 50%, inherit);*/
+/*}*/
+
+.pieShadow {
+    width: 100%;
+    height: 200%;
+    position: absolute;
+    border-radius: 50%;
+    background-image: linear-gradient(to top, transparent 50%, #000 0);
+    /*transform: rotate(0.08turn);*/
+    /*animation-name: animateShadow;*/
+    /*animation-duration: 2s;*/
+    opacity: 0.5;
+}

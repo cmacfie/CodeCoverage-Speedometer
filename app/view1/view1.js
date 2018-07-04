@@ -10,841 +10,158 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 app.controller('View1Ctrl', function ($scope) {
-    $scope.releases = ["3.2", "3.2 SR1", "3.2 SR2", "3.2 SR3", "3.2 SR4", "3.2 SR5", "Sept 2017", "Sept" +
-    " 2017 Patch 1", "Sept 2017 Patch 2", "Sept 2017 Patch 3", "Nov 2017", "Nov 2017 Patch 1", "Nov 2017" +
-    " Patch 2"];
-    // "November 2017", "November 2017 Patch 2", "November" +
-    // " 2017 Patch 3"];
-    // "June 2017", "June 2017 Patch 1", "June 2017 Patch 2", "June 2017 Patch 3"];
-    $scope.apis = [];
-    $scope.maxWidth = $scope.releases.length * 145;
-    $scope.apis.push({
-        data: [{
-            ver: "3.2",
-            form: "square",
-            color: "Green",
-            state: "experimental",
-            oldVersionText: "",
-            newVersionText: "openApp(appId)"
-        },
-            {
-                ver: "3.2 SR1",
-                form: "hidden",
-                color: "White",
-                state: "experimental",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "3.2 SR2",
-                form: "square",
-                color: "Yellow",
-                state: "experimental",
-                oldVersionText: "openApp(appId)",
-                newVersionText: "openApp(appId, state)"
-            },
-            {
-                ver: "3.2 SR3",
-                form: "square",
-                color: "Yellow",
-                state: "experimental",
-                oldVersionText: "openApp(appId," +
-                " state)",
-                newVersionText: "openApp(appId)"
-            },
-            {
-                ver: "3.2 SR4",
-                form: "hidden",
-                color: "White",
-                state: "experimental",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "3.2 SR5",
-                form: "triangle",
-                color: "transparent",
-                state: "deprecated",
-                oldVersionText: "",
-                newVersionText: ""
-            }], name: "openApp", startIndex: 0
-    });
-    $scope.apis.push({
-        data: [{
-            ver: "3.2",
-            form: "square",
-            color: "Green",
-            state: "experimental",
-            oldVersionText: "",
-            newVersionText: "currApp()"
-        },
-            {
-                ver: "2.2 SR1",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "currApp()",
-                newVersionText: "currApp(state)"
-            },
-            {
-                ver: "3.2 SR2",
-                form: "hidden",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "currApp()",
-                newVersionText: "currApp(state)"
-            },
-            {
-                ver: "3.2 SR3",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "currApp(state)",
-                newVersionText: "currApp(state, newState)"
-            },
-            {ver: "3.2 SR4", form: "hidden", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {ver: "3.2 SR5", form: "circle", color: "White", state: "locked", oldVersionText: "", newVersionText: ""},
-            {ver: "Sept 2017", form: "hidden", color: "White", state: "locked", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Sept 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "locked",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 2",
-                form: "hidden",
-                color: "White",
-                state: "locked",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 3",
-                form: "hidden",
-                color: "White",
-                state: "locked",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {ver: "Nov 2017", form: "hidden", color: "White", state: "locked", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Nov 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "locked",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Nov 2017 Patch 2",
-                form: "hidden",
-                color: "White",
-                state: "locked",
-                oldVersionText: "",
-                newVersionText: ""
-            }], name: "currApp", startIndex: 0
-    });
-    $scope.apis.push({
-        data: [{
-            ver: "3.2 SR4",
-            form: "circle",
-            color: "Green",
-            state: "stable",
-            oldVersionText: "",
-            newVersionText: "getGlobal(event)"
-        },
-            {
-                ver: "3.2 SR5",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "getGlobal(event)",
-                newVersionText: "getGlobal()"
-            },
-            {
-                ver: "Sept 2017",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "getGlobal()",
-                newVersionText: "getGlobal(event, id)"
-            },
-            {
-                ver: "Sept 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 2",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "getGlobal(event, id)",
-                newVersionText: "getGlobal(event)"
-            },
-            {
-                ver: "Sept 2017 Patch 3",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "getGlobal(event, id)",
-                newVersionText: "getGlobal(event)"
-            },
-            {
-                ver: "Nov 2017",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "getGlobal(event, id)",
-                newVersionText: "getGlobal(event)"
-            },
-            {
-                ver: "Nov 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "getGlobal(event, id)",
-                newVersionText: "getGlobal(event)"
-            },
-            {
-                ver: "Nov 2017 Patch 2",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "getGlobal(event)",
-                newVersionText: "getGlobal()"
-            }], name: "getGlobal", startIndex: 4
-    });
-    $scope.apis.push({
-        data: [{
-            ver: "3.2",
-            form: "square",
-            color: "Green",
-            state: "experimental",
-            oldVersionText: "",
-            newVersionText: "setOnError()"
-        },
-            {
-                ver: "2.2 SR1",
-                form: "square",
-                color: "Yellow",
-                state: "experimental",
-                oldVersionText: "setOnError()",
-                newVersionText: "setOnError(state)"
-            },
-            {
-                ver: "3.2 SR2",
-                form: "square",
-                color: "White",
-                state: "experimental",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "3.2 SR3",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "setOnError(state)",
-                newVersionText: "setOnError(state, newState)"
-            },
-            {ver: "3.2 SR4", form: "circle", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {ver: "3.2 SR5", form: "circle", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {ver: "Sept 2017", form: "square", color: "White", state: "locked", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Sept 2017 Patch 1",
-                form: "square",
-                color: "White",
-                state: "locked",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 2",
-                form: "square",
-                color: "White",
-                state: "locked",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 3",
-                form: "square",
-                color: "White",
-                state: "locked",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {ver: "Nov 2017", form: "square", color: "White", state: "locked", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Nov 2017 Patch 1",
-                form: "square",
-                color: "White",
-                state: "locked",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Nov 2017 Patch 2",
-                form: "square",
-                color: "White",
-                state: "locked",
-                oldVersionText: "",
-                newVersionText: ""
-            }], name: "setOnError", startIndex: 0
-    });
-    $scope.apis.push({
-        data: [
-            {
-                ver: "3.2 SR1",
-                form: "circle",
-                color: "Green",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: "setLanguage(state)"
-            },
-            {
-                ver: "3.2 SR2",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "setLanguage(state)",
-                newVersionText: "setLanguage(state, newState)"
-            },
-            {ver: "3.2 SR3", form: "circle", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {ver: "3.2 SR4", form: "circle", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {ver: "3.2 SR5", form: "circle", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {ver: "Sept 2017", form: "circle", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Sept 2017 Patch 1",
-                form: "circle",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 2",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "setLanguage(state,newState)",
-                newVersionText: "setLanguage(state)"
-            },
-            {
-                ver: "Sept 2017 Patch 3",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "setLanguage(state)",
-                newVersionText: "setLanguage(state, setLang)"
-            },
-            {
-                ver: "Nov 2017",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "setLanguage(state, setLang)",
-                newVersionText: "setLanguage(state)"
-            },
-            {
-                ver: "Nov 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "setLanguage(state)",
-                newVersionText: "setLanguage(state, setLang)"
-            },
-            {
-                ver: "Nov 2017 Patch 2",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "setLanguage(state, setLang)",
-                newVersionText: "setLanguage(state)"
-            }], name: "setLanguage", startIndex: 1
-    });
-    $scope.apis.push({
-        data: [{
-            ver: "3.2",
-            form: "square",
-            color: "Green",
-            state: "stable",
-            oldVersionText: "",
-            newVersionText: "table()"
-        },
-            {
-                ver: "2.2 SR1",
-                form: "circle",
-                color: "White",
-                state: "stable",
-                oldVersionText: "currApp()",
-                newVersionText: "currApp(state)"
-            },
-            {
-                ver: "3.2 SR2",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "currApp()",
-                newVersionText: "currApp(state)"
-            },
-            {
-                ver: "3.2 SR3",
-                form: "circle",
-                color: "White",
-                state: "stable",
-                oldVersionText: "currApp(state)",
-                newVersionText: "currApp(state, newState)"
-            },
-            {ver: "3.2 SR4", form: "hidden", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {ver: "3.2 SR5", form: "circle", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {ver: "Sept 2017", form: "hidden", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Sept 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 2",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 3",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {ver: "Nov 2017", form: "hidden", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Nov 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Nov 2017 Patch 2",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            }], name: "table", startIndex: 0
-    });
-    $scope.apis.push({
-        data: [{
-            ver: "3.2",
-            form: "square",
-            color: "Green",
-            state: "stable",
-            oldVersionText: "",
-            newVersionText: "getAppList()"
-        },
-            {
-                ver: "2.2 SR1",
-                form: "circle",
-                color: "White",
-                state: "stable",
-                oldVersionText: "currApp()",
-                newVersionText: "currApp(state)"
-            },
-            {
-                ver: "3.2 SR2",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "currApp()",
-                newVersionText: "currApp(state)"
-            },
-            {
-                ver: "3.2 SR3",
-                form: "circle",
-                color: "White",
-                state: "stable",
-                oldVersionText: "currApp(state)",
-                newVersionText: "currApp(state, newState)"
-            },
-            {ver: "3.2 SR4", form: "hidden", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "3.2 SR5",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "getAppList()",
-                newVersionText: "getAppList(id)"
-            },
-            {ver: "Sept 2017", form: "hidden", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Sept 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 2",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 3",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {ver: "Nov 2017", form: "hidden", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Nov 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Nov 2017 Patch 2",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            }], name: "getAppList", startIndex: 0
-    });
-    $scope.apis.push({
-        data: [{
-            ver: "3.2",
-            form: "square",
-            color: "Green",
-            state: "experimental",
-            oldVersionText: "",
-            newVersionText: "resize()"
-        },
-            {
-                ver: "2.2 SR1",
-                form: "circle",
-                color: "White",
-                state: "experimental",
-                oldVersionText: "currApp()",
-                newVersionText: "currApp(state)"
-            },
-            {
-                ver: "3.2 SR2",
-                form: "hidden",
-                color: "White",
-                state: "experimental",
-                oldVersionText: "currApp()",
-                newVersionText: "currApp(state)"
-            },
-            {
-                ver: "3.2 SR3",
-                form: "circle",
-                color: "Yellow",
-                state: "experimental",
-                oldVersionText: "resize()",
-                newVersionText: "resize(size)"
-            },
-            {
-                ver: "3.2 SR4",
-                form: "hidden",
-                color: "White",
-                state: "experimental",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "3.2 SR5",
-                form: "circle",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "getAppList()",
-                newVersionText: "getAppList(id)"
-            },
-            {ver: "Sept 2017", form: "hidden", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Sept 2017 Patch 1",
-                form: "hidden",
-                color: "Yellow",
-                state: "stable",
-                oldVersionText: "resize(size)",
-                newVersionText: "resize(size, id)"
-            },
-            {
-                ver: "Sept 2017 Patch 2",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 3",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {ver: "Nov 2017", form: "hidden", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Nov 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Nov 2017 Patch 2",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            }], name: "resize", startIndex: 0
-    });
-    $scope.apis.push({
-        data: [
-            {
-                ver: "Sept 2017 Patch 1",
-                form: "hidden",
-                color: "Green",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: "theme(name)"
-            },
-            {
-                ver: "Sept 2017 Patch 2",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Sept 2017 Patch 3",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {ver: "Nov 2017", form: "hidden", color: "White", state: "stable", oldVersionText: "", newVersionText: ""},
-            {
-                ver: "Nov 2017 Patch 1",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            },
-            {
-                ver: "Nov 2017 Patch 2",
-                form: "hidden",
-                color: "White",
-                state: "stable",
-                oldVersionText: "",
-                newVersionText: ""
-            }], name: "theme", startIndex: 7
-    });
 
+    // var deg = 180;
 
-    $scope.getForm = function (state, lastState, nextState, color) {
-        if (state === lastState && color !== 'Yellow') {
-            return 'hidden';
-        } else if (nextState === 'locked') {
-            return 'triangle ' + color;
-        } else if (state === 'experimental') {
-            return 'square';
-        } else if (state === 'stable') {
-            return 'circle';
-        } else if (state === 'deprecated') {
-            return 'triangle red';
-        } else {
-            return 'circle'
+    $scope.repos = [{name: "api-monitor-mashup", currProc: 68.5, lastProc: 82.72, locCov: "1000", locTot: "1923"},
+        {name: "apiculturist", currProc: 92.53, lastProc: 91.67, locCov: "1320", locTot: "3201"},
+        {name: "la-vie", currProc: 54.02, lastProc: 52.15, locCov: "1320", locTot: "3201"},
+        {name: "geo-server", currProc: 11.84, lastProc: 11.84, locCov: "1320", locTot: "3201"},
+        {name: "sense-client", currProc: 36.72, lastProc: 36.29, locCov: "1320", locTot: "3201"},
+        {name: "sense-client/dev-hub", currProc: 45.26, lastProc: 45.26, locCov: "1320", locTot: "3201"},
+        {name: "depghraph-service", currProc: 45.68, lastProc: 45.68, locCov: "1320", locTot: "3201"}];
+
+    // $scope.randNumbers = [];
+    console.log($scope.repos);
+
+    function makeAnimationKeyframes(index) {
+        // console.log($scope.randNumbers)
+        var repo = $scope.repos[index];
+        console.log(repo);
+        $.keyframe.define([{
+            name: 'animateShadow' + index,
+            '0%': {'transform': 'rotate(' + (0) + 'deg)'},
+            '100%': {'transform': 'rotate(' + (repo.currProc / 100 * 180) + 'deg)'}
         }
+        ]);
+        $.keyframe.define([{
+            name: 'animateArrow' + index,
+            '0%': {'transform': 'rotate(' + (-90) + 'deg)'},
+            '100%': {'transform': 'rotate(' + (-90 + repo.currProc / 100 * 180) + 'deg)'}
+        }
+        ]);
+        console.log(-90 + repo.currProc);
+        $.keyframe.define([{
+            name: 'animateArrowWhite' + index,
+            '0%': {'opacity': '0.6', 'transform': 'rotate(' + (-90 + repo.currProc / 100 * 180) + 'deg)'},
+            '100%': {'opacity': '0.6', 'transform': 'rotate(' + (-90 + repo.lastProc / 100 * 180) + 'deg)'}
+        }
+        ]);
+        // console.log(-90 + $scope.randNumbers[index], (-90 + $scope.randNumbers[index]) * 0.7);
+        // $(".pieShadow").playKeyframe(
+        //   'animateShadow 1.5s cubic-bezier(0.3,0,0.2,1) 0s 1 normal forwards'
+        // );
     }
 
-    $scope.getBackground = function (bg) {
-        switch (bg) {
-            case 'Red':
-                return "linear-gradient(rgb(255,0,0), rgb(210,0,0))"
-                // return "rgba(255,0,0,0.9)";
-                break;
-            case 'White':
-                return "linear-gradient(rgb(255,255,255), rgb(210,210,255))";
-                // return "rgba(255,255,255,0.9)";
-                break;
-            case 'Green':
-                return "linear-gradient(rgb(0,255,0), rgb(0,210,0))";
-                // return "rgba(0,255,0,0.9)";
-                break;
-            case 'Yellow':
-                return "linear-gradient(rgb(255,255,0,0.9), rgb(210,210,0))";
-                // return "rgba(255,255,0,0.9)";
-                break;
-        }
+
+    function setUpAnimation() {
+        $('.percent').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 1500,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now) + '%');
+                }
+            });
+        });
+
+        $(".pieShadow").each(function (index) {
+            makeAnimationKeyframes(index)
+            // console.log(this, index);
+            $(this).playKeyframe(
+                'animateShadow' + index + ' 1.5s cubic-bezier(0.3,0,0.2,1) 0s 1 normal forwards'
+            );
+        });
+
+        $(".arrowBlack").each(function (index) {
+            // console.log(this, index);
+            $(this).playKeyframe(
+                'animateArrow' + index + ' 1.5s cubic-bezier(0.3,0,0.2,1) 0s 1 normal forwards'
+            );
+        });
+        $(".arrowWhite").each(function (index) {
+            // console.log(this, index);
+            $(this).playKeyframe(
+                'animateArrowWhite' + index + ' 1.5s cubic-bezier(0.3,0,0.2,1) 1.5s 1 normal forwards'
+            );
+        });
     }
 
-    // function getDecimal(){
-    //     var r = "" + Math.random();
-    //     console.log(r);
-    //     console.log(r.slice(0,6));
-    //     return r;
+
+    var $injector = angular.injector(["ng"]);
+    var deferred = $injector.get("$q");
+
+    var setWidth = function (divsPerRow) {
+        var width = $(window).width();
+        var metricContainer = $(".metricContainer");
+        var padding = metricContainer.css('padding-left').slice(0, metricContainer.css('padding-left').length - 2) << 1;
+        var border = metricContainer.css('border-width').slice(0, metricContainer.css('border-width').length - 2) * 2;
+        var margin = metricContainer.css('margin').slice(0, metricContainer.css('margin').length - 2) * 2;
+        var inlineBlockMargin = -2 * 4;
+        var newWidth = (width / divsPerRow) - padding - border - margin + inlineBlockMargin;
+        // $(".metricContainer").css({'width': newWidth + 'px', 'height': newWidth / 2 + 'px'});
+        // $(".arrow").css({
+        //     'border-bottom-width': newWidth / 2 + 'px',
+        //     'border-left-width': newWidth * 0.03 + 'px',
+        //     'border-right-width': newWidth * 0.03 + 'px',
+        //     'left': 'calc(50% - ' + newWidth * 0.03 + 'px)'
+        // })
+    }
+
+
+    // function generateRandNumbers(){
+    //     for (var i = 0; i < $scope.repos.length; i++) {
+    //         var r = Math.floor(Math.random() * 180);
+    //         $scope.randNumbers.push(r);
+    //         console.log(r / 180);
+    //         var sliced = r / 180 > 0.1 ? (r / 180 + "000").slice(2, 4) : (r / 180 + "000").slice(3, 4);
+    //         $("#text" + i).text(sliced + '%')
+    //     }
     // }
-    //
-    // $scope.getAnimation = function () {
-    //     return getDecimal();
-    // }
-    //
-    //
-    // // $scope.getAnimation = function (){
-    // //     return (Math.random()*2+ 2) + "s";
-    // // }
-    var isActive = false;
-    var currActive = "";
-    var lastActive;
 
-    var activeNewVersionAPI, activeOldVersionApi, activeOldVersionText, activeNewVerisonText, activeDetails
-    $scope.setActive = function (ver, $event) {
-        console.log($event.target, lastActive, "hej")
-        if($event.target === lastActive) {
-            console.log(ver, lastActive, "hej")
-            isActive = false;
-            lastActive = undefined;
-            $($event.target).addClass('animateOut');
-            setTimeout(function () {
-                $($event.target).removeClass('clicked');
-                $($event.target).removeClass('animateOut');
-                // lastActive = $event.target;
-            }, 1000)
-        } else {
-            isActive = true;
-            activeNewVerisonText = $scope.newVersionText;
-            activeNewVersionAPI = $scope.newVersionAPI;
-            activeOldVersionApi = $scope.oldVersionAPI;
-            activeOldVersionText = $scope.oldVersionText;
-            activeDetails = $scope.detailsBoxAPI;
-            currActive = ver;
-            if ($event.target !== lastActive) {
-                $(lastActive).addClass('animateOut');
-                setTimeout(function () {
-                    $(lastActive).removeClass('animateOut');
-                    $(lastActive).removeClass('clicked');
-                    lastActive = $event.target;
-                }, 1000)
-            }
 
-            $($event.target).addClass('clicked')
-        }
+    function setUpCSS(numOfObjs) {
+        var renderedObjects = [];
+        var p1 = new Promise(function (resolve, reject) {
+            var checkExist = setInterval(function () {
+                if ($('.arrow').length > numOfObjs) {
+                    resolve("Found");
+                    clearInterval(checkExist);
+                }
+            }, 100);
+        });
+        var p2 = new Promise(function (resolve, reject) {
+            var checkExist = setInterval(function () {
+                if ($('.metricContainer').length >= numOfObjs) {
+                    resolve("Found");
+                    clearInterval(checkExist);
+                }
+            }, 100);
+        });
+        renderedObjects.push(p1);
+        renderedObjects.push(p2);
+        deferred.all(renderedObjects).then(function () {
+            console.log("Resolved")
+            // generateRandNumbers();
+            // setWidth($scope.numOfObjs);
+            setUpAnimation();
+        });
     }
 
-    function shuffle(a) {
-        var j, x, i;
-        for (i = a.length - 1; i > 0; i--) {
-            j = Math.floor(Math.random() * (i + 1));
-            x = a[i];
-            a[i] = a[j];
-            a[j] = x;
-        }
-        return a;
-    }
-
-    $scope.hoverIn = function (oldVersionAPI, oldVersionText, newVersionAPI, newVersionText, detailsBoxAPI) {
-        // $(lastActive).removeClass('clicked');
-        // $(lastActive).removeClass('clicked');
-        $("#detailsBox").addClass("fadeIn");
-        setTimeout(function(){
-            $("#detailsBox").removeClass("fadeIn");
-        },250)
-        if (oldVersionText === "" && newVersionText !== '') {
-            $scope.newVersionAPI = newVersionAPI;
-            $scope.newVersionText = newVersionText;
-            $scope.detailsBoxAPI = detailsBoxAPI;
-            $scope.showInfo = true;
-            $scope.showDef = true;
-        }
-        else if (oldVersionText !== "") {
-            $scope.oldVersionText = oldVersionText;
-            $scope.newVersionText = newVersionText;
-            $scope.oldVersionAPI = oldVersionAPI;
-            $scope.newVersionAPI = newVersionAPI;
-            $scope.detailsBoxAPI = detailsBoxAPI;
-            $scope.showInfo = true;
-            $scope.showDef = false;
-        }
-    }
-    $scope.hoverOut = function (ver) {
-        if(isActive) {
-            $scope.oldVersionText = activeOldVersionText;
-            $scope.newVersionText = activeNewVerisonText;
-            $scope.oldVersionAPI = activeOldVersionApi;
-            $scope.newVersionAPI = activeNewVersionAPI;
-            $scope.detailsBoxAPI = activeDetails;
-        }
-        else if (ver !== currActive || !isActive) {
-            $scope.showInfo = false;
-            $scope.showDef = false;
-        }
-    }
+    setUpCSS($scope.repos.length);
+    // var p1 = new Promise(function(resolve, reject){
+    //     var checkExist = setInterval(function() {
+    //         if ($('.arrow').length > 3) {
+    //             resolve("Found");
+    //             clearInterval(checkExist);
+    //         }
+    //     }, 100);
+    // });
+    // p.then(function(){
+    //     setWidth(1);
+    // });
+    // $(document).find(".metricContainer").then(setWidth(7));
+    // setWidth($(".metricContainer"));
 });
-
-// 'use strict';
-//
-// var app = angular.module('myApp.view1', ['ngRoute']);
-//
-// app.config(['$routeProvider', function($routeProvider) {
-//     $routeProvider.when('/view1', {
-//         templateUrl: 'view1/view1.html',
-//         controller: 'View1Ctrl'
-//     });
-// }]);
-
-// app.controller('View1Ctrl', function($scope) {
-//     console.log($scope)
-//     $scope.apis = [];
-//     var data = [];
-//     data.push([{ver: "Ver1", form: "square", color: "Green"},
-//         {ver: "Ver2", form: "square", color: "Yellow"},
-//         {ver: "Ver3", form: "square", color: "Yellow"},
-//         {ver: "Ver4", form: "circle", color: "Yellow"},
-//         {ver: "Ver5", form: "circle", color: "Grey"},
-//         {ver: "Ver6", form: "circle", color: "Red"}]);
-//     data.push([{ver: "Ver1", form: "square", color: "Green"},
-//         {ver: "Ver2", form: "square", color: "Yellow"},
-//         {ver: "Ver3", form: "square", color: "White"},
-//         {ver: "Ver4", form: "circle", color: "Yellow"},
-//         {ver: "Ver5", form: "circle", color: "White"},
-//         {ver: "Ver6", form: "circle", color: "Yellow"},
-//         {ver: "Ver7", form: "circle", color: "White"}]);
-//     apis.push(versions);
-//     console.log($scope.apis);
-//     $scope.hoverIn = function(){
-//         this.showInfo = true;
-//     }
-//     $scope.hoverOut = function(){
-//         this.showInfo = false;
-//     }
-// });

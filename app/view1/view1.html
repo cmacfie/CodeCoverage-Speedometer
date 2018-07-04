@@ -1,173 +1,27 @@
-<div class="container timelineContainer">
-    <div class="row" style="height: 60px;">
-        <div class="col-md-5 col-sm-5">
-            <h1>Capability API</h1>
+<div class="metricContainer" ng-repeat="repo in repos track by $index">
+    <div class="speedometerHolder">
+        <div class="arrowHolder">
+            <div class="arrow arrowWhite"></div>
         </div>
-        <!--<div ng-show="showInfo" class="col-md-7 col-sm-7 detailsBox">-->
-        <!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
-        <!--<div class="row">-->
-        <!--<h2>{{detailsBoxAPI}}</h2>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-        <!--<div class="col-md-3 col-sm-3 oldVersion"><b>Old Version</b></div>-->
-        <!--<div class="col-md-9 col-sm-9 oldVersion"><b>Old Method</b></div>-->
-        <!--<div class="col-md-3 col-sm-3 oldVersion">{{oldVersionAPI}}</div>-->
-        <!--<div class="col-md-9 col-sm-9 oldVersion">{{oldVersionText}}</div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-        <!--<div class="col-md-3 col-sm-3 newVersion"><b>New Version</b></div>-->
-        <!--<div class="col-md-9 col-sm-9 newVersion"><b>New Method</b></div>-->
-        <!--<div class="col-md-3 col-sm-3-->
-        <!--newVersion">{{newVersionAPI}}-->
-        <!--</div>-->
-        <!--<div class="col-md-9 col-sm-9 newVersion">{{newVersionText}}</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--</div>-->
-    </div>
-</div>
-<div class="container" ng-style="{'max-width': maxWidth + 'px'}">
-
-    <!--<div class="col-md-2 col-sm-2 apiName" style="top:50%; margin: auto 0;"></div>-->
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-10 col-sm-10 timeline" style="border-bottom: 1px black dotted; font-weight:bold;
-        background: rgba(98,98,98,0.46)">
-            <div ng-style="{'margin-left': (($index+versions.startIndex)*120) + 'px'}"
-                 ng-repeat="r in releases track by $index">
-                <div style="padding-right:25px; bottom:0" class="version">{{r}}</div>
-            </div>
+        <div class="arrowHolder">
+            <div class="arrowCircle"></div>
+            <div class="arrow arrowBlack"></div>
+        </div>
+        <div class="pieHolder">
+            <div class="pieShadow"></div>
+            <div class="pie-halfHider"></div>
+            <div clasS="shadow"></div>
+            <div class="píeMiddleCircle"></div>
+            <div class="gradient-pie"></div>
         </div>
     </div>
-    <div ng-repeat="versions in apis track by $index" class="row" style="overflow:hidden">
-        <div class="col-md-2 col-sm-2 apiName" style="top:50%; margin: auto 0;">{{versions.name}}</div>
-        <div class="col-md-10 col-sm-10 timeline">
-            <div style="height:50px;"
-                 ng-style="{'margin-left': (($index+versions.startIndex)*120) + 'px'}"
-                 ng-repeat="version in versions.data track by $index">
-                <div ng-show="version.state !== 'deprecated'"
-                     class="line" ng-class="version
-                .state"></div>
-                <!--<img ng-show="version.state !== 'deprecated' && version.state !== versions.data[$index-1].state"-->
-                <!--class="state-img" title="{{version.state}}"-->
-                <!--src="images/{{version.state}}.png">-->
-                <div
-                        ng-style="{'background': getBackground(version.color)}"
-                        ng-mouseenter="hoverIn(versions.data[$index-1].ver, version.oldVersionText, version.ver, version.newVersionText, versions.name)"
-                        ng-mouseleave="hoverOut(version.ver)"
-                        class="form"
-                        ng-click="setActive(version.ver, $event)"
-                        ng-class="getForm(version.state, versions.data[$index-1].state, versions.data[$index+1].state, version.color)"
-
-                ></div>
-                <!--<div class="infoBox" ng-style="{'margin-left': ($index*60 - 5) + 'px'}" ng-show="showInfo">{{version-->
-                <!--.ver}}-->
-                <!--</div>-->
-                <!--{{version}}-->
-                <!--<div class="form circle">{{$index}}</div>-->
-            </div>
+    <div class="textContainer">
+        <div class="textHolder percent">{{repo.currProc}}</div>
+        <div class="textHolder repo"><h2>{{repo.name}}</h2></div>
+        <div style="width:100%; border-top: 1px dotted white">
+            <div style="display:inline-block; float:left; text-align:center; width: calc(100% / 3)" class="textHolder"><p>LOC Covered</p><h2>{{repo.locCov}}</h2></div>
+            <div ng-style="(repo.currProc - repo.lastProc) > 0.5 && {'color':'yellowgreen'} || (repo.currProc - repo.lastProc) < -1 && {'color':'red'} || (repo.currProc - repo.lastProc) < 0.5 && {'color':'yellow'}"  style="display:inline-block; float:left; text-align:center; width: calc(100% / 3)"  class="textHolder"><p>Change</p><h2>{{repo.currProc - repo.lastProc | limitTo:3}}%</h2></div>
+            <div style="display:inline-block; float:left; text-align:center; width: calc(100% / 3)"  class="textHolder"><p>LOC Total</p>{{repo.locTot}}</div>
         </div>
     </div>
-    <div style="margin-left:175px; margin-top:50px;" class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <div class="row" style="margin-bottom: 10px">
-                    <img style="  display:block;
-                          margin-left:-50px;
-                          margin-top: 0px;
-                          width:30px;
-                          height:30px;
-                          position:absolute;"
-                         src="images/experimental.png" title="Experimental">
-                    <div style="width:30px; height:30px; background:transparent; border: 3px solid #009FD4;
-                            border-radius: 5px;
-                            display:inline-block; position:relative;">
-                    </div>
-                    <p style="margin-left: 20px; margin-top:4px;">Experimental</p>
-                </div>
-                <div class="row" style="margin-bottom: 10px">
-                    <img style="  display:block;
-                          margin-left:-50px;
-                          margin-top: 0px;
-                          width:25px;
-                          height:25px;
-                          position:absolute;"
-                         src="images/stable.png">
-                    <div style="width:30px; height:30px; background:transparent; border-radius:40px; border: 3px solid
-                #298269; display:inline-block; position:relative;">
-
-                    </div>
-                    <p style="margin-left: 20px; margin-top:4px;">Stable</p>
-                </div>
-                <div class="row">
-                    <img style="  display:block;
-                          margin-left:-50px;
-                          margin-top: 0px;
-                          width:25px;
-                          height:25px;
-                          position:absolute;"
-                         src="images/locked.png">
-                    <div class="triangle" style="border-left: 25px solid #b04600;
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;">
-
-                    </div>
-                    <p style="margin-left: 20px; margin-top:4px;">Locked</p>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="row" style="margin-bottom: 10px">
-                    <div style="width:30px; height:30px; background:green; border-radius: 5px;
-                            display:inline-block; position:relative;" ng-style="{'background':getBackground('Green')}">
-
-                    </div>
-                    <p style="margin-left: 20px; margin-top:4px;">Added</p>
-                </div>
-                <div class="row" style="margin-bottom: 10px">
-                    <div style="width:30px; height:30px; border-radius: 5px;
-                            display:inline-block; position:relative;" ng-style="{'background':getBackground('Yellow')}">
-
-                    </div>
-                    <p style="margin-left: 20px; margin-top:4px;">Updated</p>
-                </div>
-                <div class="row" style="margin-bottom: 10px">
-                    <div style="width:30px; height:30px; background:white; border-radius: 5px;
-                            display:inline-block; position:relative;" ng-style="{'background':getBackground('White')}">
-
-                    </div>
-                    <p style="margin-left: 20px; margin-top:4px;">No change</p>
-                </div>
-                <div class="row" style="margin-bottom: 10px">
-                    <div style="width:30px; height:30px; background:red; border-radius: 5px;
-                            display:inline-block; position:relative;" ng-style="{'background':getBackground('Red')}">
-
-                    </div>
-                    <p style="margin-left: 20px; margin-top:4px;">Deprecated</p>
-                </div>
-            </div>
-            <div class="col-md-7 offset-md-1" style="background:rgba(0,0,0,0.25);padding:25px;">
-                <div id="detailsBox">
-                    <div ng-show="showInfo" class="row">
-                        <h2>{{detailsBoxAPI}}</h2>
-                    </div>
-                    <div ng-show="showInfo" class="row">
-                        <div ng-show="!showDef" class="col-md-3 col-sm-3"><b>Version</b></div>
-                        <div ng-show="!showDef" class="col-md-9 col-sm-9"><b>Method Change</b></div>
-                        <div ng-show="!showDef" class="col-md-3 col-sm-3 oldVersion">{{oldVersionAPI}}</div>
-                        <div ng-show="!showDef" class="col-md-9 col-sm-9 oldVersion">{{oldVersionText}}</div>
-                    </div>
-                    <div ng-show="showInfo" class="row">
-                        <!--<div ng-show="!showDef" class="col-md-3 col-sm-3 newVersion"><b>New Version</b></div>-->
-                        <!--<div ng-show="!showDef" class="col-md-9 col-sm-9 newVersion"><b>New Method</b></div>-->
-                        <!--<div ng-show="showDef" class="col-md-12 col-sm-12"><b>Definition</b></div>-->
-                        <div ng-show="showDef" class="col-md-3 col-sm-3"><b>Release Date</b></div>
-                        <div ng-show="showDef" class="col-md-9 col-sm-9"><b>Method</b></div>
-                        <div class="col-md-3 col-sm-3 newVersion">{{newVersionAPI}}</div>
-                        <div class="col-md-9 col-sm-9 newVersion">{{newVersionText}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
