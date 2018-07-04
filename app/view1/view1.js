@@ -77,7 +77,7 @@ app.controller('View1Ctrl', function ($scope) {
 
 
     function setUpAnimation() {
-        $('.percent').each(function () {
+        $('.mainPercent').each(function () {
             $(this).prop('Counter', 0).animate({
                 Counter: $(this).text()
             }, {

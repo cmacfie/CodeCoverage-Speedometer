@@ -18,6 +18,16 @@ body {
     color: white;
 }
 
+
+.textContainer h2 {
+    font-size: 25px;
+    margin:0;
+}
+.textContainer p {
+    font-size: 15px;
+    margin:0;
+}
+
 .textContainer h1 {
     background: linear-gradient(90deg, #FFF 0%,#FFF 40%, #d0d0d0 50%,#FFF 60%, #FFF 100%);
     -webkit-background-clip: text;
@@ -29,9 +39,20 @@ body {
     animation-iteration-count: infinite;
 }
 
-.textContainer .percent {
+.mainPercent {
     font-size: 60px;
     margin:0;
+    /*animation-name: mainPercentAnimation;*/
+    /*animation-duration: 1s;*/
+}
+
+.changePercent {
+    line-height: 60px;
+    text-align:center;
+    animation-name: changePercentAnimation;
+    animation-duration: 2s;
+    /*animation-delay: 1.5s;*/
+    /*animation-delay: 1.5s;*/
 }
 
 .textContainer .repo {
@@ -65,14 +86,6 @@ body {
     margin-right: -5%;
 }
 
-.textContainer h2 {
-    font-size: 25px;
-    margin:0;
-}
-.textContainer p {
-    font-size: 15px;
-    margin:0;
-}
 
 .textHolder {
     /*position: relative;*/
@@ -142,7 +155,7 @@ body {
     /*height: 125px;*/
     /*padding-bottom: 150px;*/
     border-radius: 5%;
-    background: #8a8a8a;
+    background: #a2a38a;
 }
 
 .arrowHolder {
@@ -175,6 +188,13 @@ body {
     opacity:0;
 }
 
+.alignRight {
+    text-align:right;
+}
+.alignLeft {
+    text-align:left;
+}
+
 .arrowCircle {
     width: 15%;
     height: 30%;
@@ -193,7 +213,7 @@ body {
     top: 50%;
     left: 25%;
     margin: 0 auto;
-    background: #8a8a8a;
+    background: #a2a38a;
     z-index:1;
     position: absolute;
 }
@@ -240,4 +260,15 @@ body {
     2% {transform: rotate(-8deg);}
     3% {transform: rotate(0deg);}
     100% {transform: rotate(0deg);}
+}
+
+@keyframes mainPercentAnimation {
+    0% {opacity:0; margin-right: -100%}
+    100% {opacity:1; margin-right: 0%}
+}
+
+@keyframes changePercentAnimation {
+    0% {opacity:0; }
+    50% {opacity:0;}
+    100% {opacity:1;}
 }
