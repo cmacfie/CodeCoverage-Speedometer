@@ -22,22 +22,39 @@ app.controller('View1Ctrl', function ($scope) {
         {name: "depghraph-service", currProc: 45.68, lastProc: 45.68, locCov: "1320", locTot: "3201"}];
 
     // $scope.randNumbers = [];
-    console.log($scope.repos);
+    $scope.getPercentColor = function(repo){
+        var res = repo.currProc - repo.lastProc;
+        console.log(res);
+        if(res > 1){
+            return {"color":"yellowgreen"};
+        } else if(res < -1){
+            return {"color":"#da001a"};
+        } else {
+            return {"color":"yellow"};
+        }
+    }
 
     function makeAnimationKeyframes(index) {
         // console.log($scope.randNumbers)
         var repo = $scope.repos[index];
         console.log(repo);
+        var arrowDeg = -90 + repo.currProc/100*180;
         $.keyframe.define([{
             name: 'animateShadow' + index,
             '0%': {'transform': 'rotate(' + (0) + 'deg)'},
-            '100%': {'transform': 'rotate(' + (repo.currProc / 100 * 180) + 'deg)'}
+            '90%, 100%': {'transform': 'rotate(' + (repo.currProc / 100 * 180) + 'deg)'}
         }
         ]);
         $.keyframe.define([{
             name: 'animateArrow' + index,
             '0%': {'transform': 'rotate(' + (-90) + 'deg)'},
-            '100%': {'transform': 'rotate(' + (-90 + repo.currProc / 100 * 180) + 'deg)'}
+            '10%': {'transform': 'rotate(' + (arrowDeg + arrowDeg*0.2) + 'deg)'},
+            '20%': {'transform': 'rotate(' + (arrowDeg + arrowDeg*-0.2) + 'deg)'},
+            '30%': {'transform': 'rotate(' + (arrowDeg + arrowDeg*0.1) + 'deg)'},
+            '40%': {'transform': 'rotate(' + (arrowDeg + arrowDeg*-0.1) + 'deg)'},
+            '50%': {'transform': 'rotate(' + (arrowDeg + arrowDeg*-0.05) + 'deg)'},
+            '60%': {'transform': 'rotate(' + (arrowDeg + arrowDeg*0.05) + 'deg)'},
+            '100%': {'transform': 'rotate(' + (arrowDeg) + 'deg)'}
         }
         ]);
         console.log(-90 + repo.currProc);
@@ -65,6 +82,12 @@ app.controller('View1Ctrl', function ($scope) {
                     $(this).text(Math.ceil(now) + '%');
                 }
             });
+        });
+        $('.textContainer h1').each(function(index){
+            $(this).css('animation-delay', Math.floor(Math.random()*30) + 's');
+        });
+        $('.gradient-pie').each(function(index){
+            $(this).css('animation-delay', Math.floor(Math.random()*30) + 's');
         });
 
         $(".pieShadow").each(function (index) {

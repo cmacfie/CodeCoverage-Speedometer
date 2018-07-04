@@ -7,21 +7,32 @@
             <div class="arrowCircle"></div>
             <div class="arrow arrowBlack"></div>
         </div>
+        <div class="circleShadowHolder">
+            <!--<div class="píeMiddleCircle"></div>-->
+            <div id="shadowLeft" class="circleShadow"></div>
+            <div id="shadowRight" class="circleShadow"></div>
+        </div>
         <div class="pieHolder">
             <div class="pieShadow"></div>
             <div class="pie-halfHider"></div>
-            <div clasS="shadow"></div>
             <div class="píeMiddleCircle"></div>
             <div class="gradient-pie"></div>
         </div>
     </div>
     <div class="textContainer">
-        <div class="textHolder percent">{{repo.currProc}}</div>
-        <div class="textHolder repo"><h2>{{repo.name}}</h2></div>
-        <div style="width:100%; border-top: 1px dotted white">
-            <div style="display:inline-block; float:left; text-align:center; width: calc(100% / 3)" class="textHolder"><p>LOC Covered</p><h2>{{repo.locCov}}</h2></div>
-            <div ng-style="(repo.currProc - repo.lastProc) > 0.5 && {'color':'yellowgreen'} || (repo.currProc - repo.lastProc) < -1 && {'color':'red'} || (repo.currProc - repo.lastProc) < 0.5 && {'color':'yellow'}"  style="display:inline-block; float:left; text-align:center; width: calc(100% / 3)"  class="textHolder"><p>Change</p><h2>{{repo.currProc - repo.lastProc | limitTo:3}}%</h2></div>
-            <div style="display:inline-block; float:left; text-align:center; width: calc(100% / 3)"  class="textHolder"><p>LOC Total</p>{{repo.locTot}}</div>
+        <div class="textHolder"><h1 class="percent">{{repo.currProc}}</h1></div>
+        <div class="textHolder repo" style="border-top: 1px dotted white; "><h2>{{repo.name}}</h2></div>
+        <div class="row" style="margin-top: 5px;">
+            <div class="col-4">
+                <p>LOC Covered</p>
+                <h2>{{repo.locCov}}</h2></div>
+            <div ng-style="getPercentColor(repo)"
+                 class="col-4 ">
+                <p>Change</p>
+                <h2>{{repo.currProc - repo.lastProc | limitTo:3}}%</h2></div>
+            <div  class="col-4 ">
+                <p>LOC Total</p>{{repo.locTot}}
+            </div>
         </div>
     </div>
 </div>
