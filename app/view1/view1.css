@@ -2,6 +2,12 @@ body {
     background: #333333
 }
 
+/*Override bootstrap*/
+.container.custom-container {
+    padding: 0 0px;
+    max-width:100%;
+}
+
 
 .textContainer {
     display:inline-block;
@@ -93,12 +99,26 @@ body {
     background: inherit;
 }
 
+#mainContain{
+    text-align:center;
+    /*margin: 0px;*/
+}
+
+#title {
+    font-size: 6em;
+}
+
+.bottomText {
+    font-size: 5em;
+    text-align: left;
+}
+
 .speedometerHolder {
     width: 250px;
     height: 125px;
     position: relative;
     margin-bottom:5%;
-    left:20%;
+    left:25px;
     z-index:0;
     /*margin-top: 150px;*/
     /*margin-left: 50px;*/
@@ -112,7 +132,11 @@ body {
     display: inline-block;
     padding: 20px;
     margin:5px;
-    max-width:460px;
+    width:350px;
+    /*transform:scale(0.6);*/
+    /*margin:-50px;*/
+    /*max-width:460px;*/
+    /*min-width:400px;*/
     /*margin: calc(5px - 2px); !* Remove margin because of inline-block*!*/
     /*width: 250px;*/
     /*height: 125px;*/
@@ -194,6 +218,8 @@ body {
     opacity: 0.5;
     z-index:1;
 }
+
+
 
 @keyframes spinAround {
     0% {transform: rotate(0deg);}

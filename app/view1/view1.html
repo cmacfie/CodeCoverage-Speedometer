@@ -1,38 +1,51 @@
-<div class="metricContainer" ng-repeat="repo in repos track by $index">
-    <div class="speedometerHolder">
-        <div class="arrowHolder">
-            <div class="arrow arrowWhite"></div>
+<!--<div class="container">-->
+<!--<div class="custom-container container"-->
+<!--<div class="row">-->
+<div id="mainContain">
+    <h1 id="title">Code Coverage</h1>
+    <div ng-repeat="repo in repos track by $index" class="metricContainer">
+        <div class="speedometerHolder">
+            <div class="arrowHolder">
+                <div class="arrow arrowWhite"></div>
+            </div>
+            <div class="arrowHolder">
+                <div class="arrowCircle"></div>
+                <div class="arrow arrowBlack"></div>
+            </div>
+            <div class="circleShadowHolder">
+                <div id="shadowLeft" class="circleShadow"></div>
+                <div id="shadowRight" class="circleShadow"></div>
+            </div>
+            <div class="pieHolder">
+                <div class="pieShadow"></div>
+                <div class="pie-halfHider"></div>
+                <div class="píeMiddleCircle"></div>
+                <div class="gradient-pie"></div>
+            </div>
         </div>
-        <div class="arrowHolder">
-            <div class="arrowCircle"></div>
-            <div class="arrow arrowBlack"></div>
-        </div>
-        <div class="circleShadowHolder">
-            <!--<div class="píeMiddleCircle"></div>-->
-            <div id="shadowLeft" class="circleShadow"></div>
-            <div id="shadowRight" class="circleShadow"></div>
-        </div>
-        <div class="pieHolder">
-            <div class="pieShadow"></div>
-            <div class="pie-halfHider"></div>
-            <div class="píeMiddleCircle"></div>
-            <div class="gradient-pie"></div>
-        </div>
-    </div>
-    <div class="textContainer">
-        <div class="textHolder"><h1 class="percent">{{repo.currProc}}</h1></div>
-        <div class="textHolder repo" style="border-top: 1px dotted white; "><h2>{{repo.name}}</h2></div>
-        <div class="row" style="margin-top: 5px;">
-            <div class="col-4">
-                <p>LOC Covered</p>
-                <h2>{{repo.locCov}}</h2></div>
-            <div ng-style="getPercentColor(repo)"
-                 class="col-4 ">
-                <p>Change</p>
-                <h2>{{repo.currProc - repo.lastProc | limitTo:3}}%</h2></div>
-            <div  class="col-4 ">
-                <p>LOC Total</p>{{repo.locTot}}
+        <div class="textContainer">
+            <div class="textHolder"><h1 class="percent">{{repo.currProc}}</h1></div>
+            <div class="textHolder repo" style="border-top: 1px dotted white; "><h2>{{repo.name}}</h2></div>
+            <div class="row" style="margin-top: 5px;">
+                <div class="col-4">
+                    <p>Last Changed</p>
+                    <h2>{{repo.locCov}}</h2></div>
+                <div ng-style="getPercentColor(repo)"
+                     class="col-4 ">
+                    <p>Change</p>
+                    <h2>{{repo.currProc - repo.lastProc | limitTo:3}}%</h2></div>
+                <div class="col-4 ">
+                    <p>LOC Total</p>{{repo.locTot}}
+                </div>
             </div>
         </div>
     </div>
+    <div class="row bottomText">
+        <div class="col-6">Data from</div>
+        <div class="col-6">Hej</div>
+    </div>
 </div>
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
