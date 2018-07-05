@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff6bacea-3603-43af-96cb-4e7f269878a5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view1/view1.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/view1/view1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view1/view1.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/view1/view1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view1/view1.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view1/view1.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -31,7 +29,7 @@
       <file leaf-file-name="view1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view1/view1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
+            <state relative-caret-position="523">
               <caret line="44" column="75" selection-start-line="44" selection-start-column="66" selection-end-line="44" selection-end-column="75" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -49,8 +47,8 @@
       <file leaf-file-name="view1.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view1/view1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="120" column="31" lean-forward="true" selection-start-line="120" selection-start-column="31" selection-end-line="120" selection-end-column="31" />
+            <state relative-caret-position="425">
+              <caret line="276" column="30" lean-forward="true" selection-start-line="276" selection-start-column="30" selection-end-line="276" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -58,8 +56,8 @@
       <file leaf-file-name="view1.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/view1/view1.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+            <state relative-caret-position="400">
+              <caret line="204" column="43" selection-start-line="204" selection-start-column="43" selection-end-line="204" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -75,10 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pieMidd</find>
-      <find>background:black</find>
-      <find>arrowCirlc</find>
-      <find>border</find>
       <find>pieMiddleCircle</find>
       <find>gradient</find>
       <find>gradient-pie</find>
@@ -104,7 +98,11 @@
       <find>shine</find>
       <find>mainPercent</find>
       <find>mainPercent h1</find>
+      <find>color1</find>
+      <find>border</find>
       <find>h1</find>
+      <find>shadowLeft</find>
+      <find>pieMiddle</find>
     </findStrings>
     <replaceStrings>
       <replace>metricContainer</replace>
@@ -127,8 +125,8 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
-        <option value="$PROJECT_DIR$/app/view1/view1.js" />
         <option value="$PROJECT_DIR$/app/view1/view1.html" />
+        <option value="$PROJECT_DIR$/app/view1/view1.js" />
         <option value="$PROJECT_DIR$/app/view1/view1.css" />
       </list>
     </option>
@@ -275,7 +273,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53147000" />
+    <option name="totallyTimeSpent" value="54128000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -675,14 +673,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view1/view1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="120" column="31" lean-forward="true" selection-start-line="120" selection-start-column="31" selection-end-line="120" selection-end-column="31" />
+        <state relative-caret-position="425">
+          <caret line="276" column="30" lean-forward="true" selection-start-line="276" selection-start-column="30" selection-end-line="276" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view1/view1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
+        <state relative-caret-position="523">
           <caret line="44" column="75" selection-start-line="44" selection-start-column="66" selection-end-line="44" selection-end-column="75" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -698,8 +696,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view1/view1.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+        <state relative-caret-position="400">
+          <caret line="204" column="43" selection-start-line="204" selection-start-column="43" selection-end-line="204" selection-end-column="43" />
         </state>
       </provider>
     </entry>

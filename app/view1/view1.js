@@ -272,15 +272,15 @@ app.controller('View1Ctrl', function ($scope) {
         var color1 = 'transparent';
         var color2 = 'transparent';
         if (diff < -1.0) {
-            color1 = 'rgba(220, 20, 60,0.1)';
-            color2 = 'rgba(220, 20, 60,0.6)';
+            color1 = 'rgba(220, 20, 60,0.6)';
+            color2 = 'rgba(220, 20, 60,0.2)';
         } else if(diff > 1.0){
-            color1 = 'rgba(154, 205, 50,0.1)';
-            color2 = 'rgba(154, 205, 50,0.6)';
+            color1 = 'rgba(154, 205, 50,0.6)';
+            color2 = 'rgba(154, 205, 50,0.2)';
         }
         // let color = diff > 1 ? 'green' : (diff < 1 ? 'red' : 'transparent');
         console.log(diff, color1);
-        return {'background': 'linear-gradient(transparent 50%,' + color1 + ',' + color2 + '99%, transparent 100%)'}
+        return {'background': 'linear-gradient(' +color1 + ',' + color2 + '10%, transparent 30%, transparent 100%)'}
     }
 
     // console.log($scope.repos.length);
