@@ -69,11 +69,11 @@ app.controller('View1Ctrl', function ($scope) {
         var res = repo.currProc - repo.lastProc;
         // console.log(res);
         if (res > 1) {
-            return {"color": "yellowgreen", 'font-size': 30+res/100*30 + 'px'};
+            return {"color": "yellowgreen", 'font-size': 30 + res / 100 * 30 + 'px'};
         } else if (res < -1) {
-            return {"color": "#da001a", 'font-size': 30-res/100*30 + 'px'};
+            return {"color": "crimson", 'font-size': 30 - res / 100 * 30 + 'px'};
         } else {
-            return {"color": "yellow", 'font-size': 30-res/100*30 + 'px'};
+            return {"color": "yellow", 'font-size': 30 - res / 100 * 30 + 'px'};
         }
     }
 
@@ -217,13 +217,13 @@ app.controller('View1Ctrl', function ($scope) {
             var repo = $scope.repos[index];
             var startDeg = repo.currProc / 100 * 180;
             var stopDeg = repo.lastProc / 100 * 180;
-            if(startDeg > stopDeg){
+            if (startDeg > stopDeg) {
                 let temp = startDeg;
                 startDeg = stopDeg;
                 stopDeg = temp;
             }
-            var color = repo.currProc - repo.lastProc > 0 ? 'green' : 'red';
-            console.log(color, startDeg, stopDeg, this);
+            var color = repo.currProc - repo.lastProc > 0 ? 'darkgreen' : 'crimson';
+            // console.log(color, startDeg, stopDeg, this);
             $(this).css('background', 'conic-gradient(transparent ' + startDeg + 'deg,' + color + ' ' + startDeg + 'deg, ' + color + ' ' + stopDeg + 'deg, transparent ' + stopDeg + 'deg)');
         });
     }
@@ -264,6 +264,20 @@ app.controller('View1Ctrl', function ($scope) {
             setWidth(objsPerRow)
             setUpCSS();
         });
+    }
+
+    $scope.getGradientCSS = function (repo) {
+        console.log(repo);
+        var diff = repo.currProc - repo.lastProc;
+        var color = 'transparent';
+        if (diff < -1.0) {
+            color = 'rgba(220, 20, 60,0.7)';
+        } else if(diff > 1.0){
+            color = 'rgba(154, 205, 50,0.7)';
+        }
+        // let color = diff > 1 ? 'green' : (diff < 1 ? 'red' : 'transparent');
+        console.log(diff, color);
+        return {'background': 'linear-gradient(transparent 70%, ' + color + ')'}
     }
 
     // console.log($scope.repos.length);

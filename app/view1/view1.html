@@ -11,7 +11,7 @@
     </div>
     <div ng-repeat="i in [] | range:2">
         <div id="metersRow" class="row">
-            <div class="col-md-2" ng-repeat="repo in get7Repos(i) track by $index ">
+            <div class="col-md-2" ng-repeat="repo in get7Repos(i) track by $index " ng-style="getGradientCSS(repo)">
                 <div class="metricContainer">
                     <div class="row" style="margin-bottom: 10px;font-size:25px; line-height:25px; height:50px;">
                         <div class="col-md-14">{{repo.name}}</div>
