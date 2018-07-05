@@ -11,8 +11,8 @@
     </div>
     <div ng-repeat="i in [] | range:2">
         <div id="metersRow" class="row">
-            <div class="col-md-2" ng-repeat="repo in get7Repos(i) track by $index " ng-style="getGradientCSS(repo)">
-                <div class="metricContainer">
+            <div class="col-md-2" ng-repeat="repo in get7Repos(i) track by $index ">
+                <div  ng-style="getGradientCSS(repo)" class="metricContainer">
                     <div class="row" style="margin-bottom: 10px;font-size:25px; line-height:25px; height:50px;">
                         <div class="col-md-14">{{repo.name}}</div>
                     </div>
@@ -42,7 +42,7 @@
                         <div class="textContainer">
                             <!--<div class="textHolder"><h1 class="percent">{{repo.currProc}}</h1></div>-->
                             <div class="row">
-                                <div class="col-md-14 mainPercent">{{repo.currProc}}%</div>
+                                <div class="col-md-14 mainPercent shineText">{{repo.currProc}}%</div>
                                 <div div ng-style="setPercentCSS(repo)" class="col-md-14 changePercent">{{repo.currProc - repo.lastProc | limitTo:3}}%
                                 </div>
                             </div>

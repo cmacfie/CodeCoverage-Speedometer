@@ -73,7 +73,7 @@ app.controller('View1Ctrl', function ($scope) {
         } else if (res < -1) {
             return {"color": "crimson", 'font-size': 30 - res / 100 * 30 + 'px'};
         } else {
-            return {"color": "yellow", 'font-size': 30 - res / 100 * 30 + 'px'};
+            return {"color": "white", 'font-size': 30 - res / 100 * 30 + 'px'};
         }
     }
 
@@ -125,7 +125,7 @@ app.controller('View1Ctrl', function ($scope) {
                 }
             });
         });
-        $('.textContainer h1').each(function (index) {
+        $('.shineText').each(function (index) {
             $(this).css('animation-delay', Math.floor(Math.random() * 60) + 's');
         });
         $('.gradient-pie').each(function (index) {
@@ -269,15 +269,18 @@ app.controller('View1Ctrl', function ($scope) {
     $scope.getGradientCSS = function (repo) {
         console.log(repo);
         var diff = repo.currProc - repo.lastProc;
-        var color = 'transparent';
+        var color1 = 'transparent';
+        var color2 = 'transparent';
         if (diff < -1.0) {
-            color = 'rgba(220, 20, 60,0.7)';
+            color1 = 'rgba(220, 20, 60,0.1)';
+            color2 = 'rgba(220, 20, 60,0.6)';
         } else if(diff > 1.0){
-            color = 'rgba(154, 205, 50,0.7)';
+            color1 = 'rgba(154, 205, 50,0.1)';
+            color2 = 'rgba(154, 205, 50,0.6)';
         }
         // let color = diff > 1 ? 'green' : (diff < 1 ? 'red' : 'transparent');
-        console.log(diff, color);
-        return {'background': 'linear-gradient(transparent 70%, ' + color + ')'}
+        console.log(diff, color1);
+        return {'background': 'linear-gradient(transparent 50%,' + color1 + ',' + color2 + '99%, transparent 100%)'}
     }
 
     // console.log($scope.repos.length);

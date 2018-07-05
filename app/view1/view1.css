@@ -32,10 +32,10 @@ body {
     margin:0;
 }
 
-.textContainer h1 {
+.shineText {
     background: linear-gradient(90deg, #FFF 0%,#FFF 40%, #d0d0d0 50%,#FFF 60%, #FFF 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /*-webkit-text-fill-color: transparent;*/
     background-size: 200% auto;
     animation-name: shine;
     animation-duration: 10s;
