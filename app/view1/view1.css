@@ -295,7 +295,7 @@ body {
     opacity: 0;
     animation: breath;
     animation-duration:10s;
-    animation-delay:1.5s;
+    animation-delay:3s;
     animation-iteration-count: infinite;
      background: conic-gradient(transparent 0deg,black 0deg, #000 30deg, transparent 30deg);
  }
@@ -341,13 +341,13 @@ body {
 }
 
 @keyframes breath {
-    0% {opacity:0.05}
+    0% {opacity:0}
     20% {opacity: 0.05}
-    25% {opacity: 0.7}
+    25% {opacity: 0.5}
     30% {opacity: 0.05}
-    35% {opacity: 0.7}
+    35% {opacity: 0.5}
     40% {opacity: 0.05}
-    45% {opacity: 0.7}
+    45% {opacity: 0.5}
     50% {opacity: 0.05}
-    100% {opacity:0.05}
+    100% {opacity:0}
 }
