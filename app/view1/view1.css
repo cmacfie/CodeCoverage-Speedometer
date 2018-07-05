@@ -1,18 +1,22 @@
 body {
-    background: #333333
+   background-color: rgb(43, 43, 43);
 }
 
 /*Override bootstrap*/
-.container.custom-container {
-    padding: 0 0px;
-    max-width:100%;
-}
+/*.container.custom-container {*/
+    /*padding: 0 0px;*/
+    /*max-width:100%;*/
+/*}*/
+
+/*#metersRow {*/
+    /*width:1400px;*/
+/*}*/
 
 
 .textContainer {
     display:inline-block;
     width:100%;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     text-align: center;
     font-size: 30px;
     color: white;
@@ -20,7 +24,7 @@ body {
 
 
 .textContainer h2 {
-    font-size: 25px;
+    font-size: 0.9vw;
     margin:0;
 }
 .textContainer p {
@@ -49,6 +53,8 @@ body {
 .changePercent {
     line-height: 60px;
     text-align:center;
+    font-weight: bold;
+    margin-bottom:20px;
     animation-name: changePercentAnimation;
     animation-duration: 2s;
     /*animation-delay: 1.5s;*/
@@ -96,12 +102,21 @@ body {
     width: 100%;
     height: 200%;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, yellow 0deg, #3fab3d 90deg, #ff4450 270deg, yellow 360deg);
+    background:
+            conic-gradient(from 0deg, yellow 0deg, #3fab3d 90deg, #ff4450 270deg, yellow 360deg);
     animation-name: spinAround;
     animation-timing-function: ease-in-out;
     z-index:0;
     animation-duration: 30s;
     animation-iteration-count: infinite;
+}
+
+.red-pie {
+    width: 100%;
+    height: 200%;
+    border-radius: 50%;
+    background: conic-gradient(transparent 0deg, #ffeb3b 30deg, transparent 60deg);
+    z-index:0;
 }
 
 .pieHolder {
@@ -122,30 +137,36 @@ body {
 }
 
 .bottomText {
-    font-size: 5em;
+    /*font-size: 5em;*/
     text-align: left;
 }
 
 .speedometerHolder {
-    width: 250px;
-    height: 125px;
+    width: 180px;
+    height: 90px;
     position: relative;
     margin-bottom:5%;
-    left:25px;
+    /*left:25px;*/
     z-index:0;
     /*margin-top: 150px;*/
     /*margin-left: 50px;*/
     display:inline-block;
-    float: left;
+    /*float: left;*/
     background: inherit;
 }
 
+
 .metricContainer {
-    border: 1px solid white;
-    display: inline-block;
+    /*min-width:350px;*/
+    border: 3px dashed white;
+    /*display: inline-block;*/
     padding: 20px;
     margin:5px;
-    width:350px;
+    /*transform:rotate3d(0,1,0,90deg);*/
+    /*width:350px;*/
+    animation-name: flipCard;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
     /*transform:scale(0.6);*/
     /*margin:-50px;*/
     /*max-width:460px;*/
@@ -154,9 +175,49 @@ body {
     /*width: 250px;*/
     /*height: 125px;*/
     /*padding-bottom: 150px;*/
-    border-radius: 5%;
-    background: #a2a38a;
+    border-radius: 5px;
+    /*background:*/
+            /*linear-gradient(27deg, rgba(21, 21, 21, 0.51) 5px, transparent 5px) 0 5px,*/
+            /*linear-gradient(207deg, rgba(21, 21, 21, 0.51) 5px, transparent 5px) 10px 0px,*/
+            /*linear-gradient(27deg, rgba(34, 34, 34, 0.51) 5px, transparent 5px) 0px 10px,*/
+            /*linear-gradient(207deg, rgba(34, 34, 34, 0.5) 5px, transparent 5px) 10px 5px,*/
+            /*linear-gradient(90deg, rgba(27, 27, 27, 0.51) 10px, transparent 10px),*/
+            /*linear-gradient(rgba(29, 29, 29, 0.5) 25%, rgba(26, 26, 26, 0.50) 25%, rgba(26, 26, 26, 0.50) 50%, transparent 50%, transparent 75%, rgba(36, 36, 36, 0.50) 75%, #242424);*/
+    /*background-color: rgba(19, 19, 19);*/
+    /*background:*/
+            /*linear-gradient(27deg, rgb(225,225,225) 5px, transparent 5px) 0 5px,*/
+            /*linear-gradient(207deg,  rgb(225,225,225) 5px, transparent 5px) 10px 0px,*/
+            /*linear-gradient(27deg, rgb(222,222,222) 5px, transparent 5px) 0px 10px,*/
+            /*linear-gradient(207deg, rgb(222,222,222) 5px, transparent 5px) 10px 5px,*/
+            /*linear-gradient(90deg, rgb(229,229,229) 10px, transparent 10px),*/
+            /*linear-gradient(rgb(227,227,227) 25%, rgb(230,230,230) 25%, rgb(230,230,230) 50%, transparent 50%, transparent 75%, rgb(220,220,220) 75%, rgb(237,237,237));*/
+    /*background-color: rgb(237,237,237);*/
+    background-size: 20px 20px;
 }
+
+
+.pieMiddleCircle {
+    width: 50%;
+    height: 100%;
+    border-radius: 50% 50% 0 0;
+    top: 50%;
+    left: 25%;
+    margin: 0 auto;
+    background-color: rgb(43, 43, 43);
+    /*background:*/
+            /*linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,*/
+            /*linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,*/
+            /*linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,*/
+            /*linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,*/
+            /*linear-gradient(90deg, #1b1b1b 10px, transparent 10px),*/
+            /*linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);*/
+    /*background-color: #131313;*/
+    background-size: 20px 20px;
+
+    z-index:1;
+    position: absolute;
+}
+
 
 .arrowHolder {
     width: 100%;
@@ -170,7 +231,7 @@ body {
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 125px solid black;
+    border-bottom: 90px solid black;
     left: calc(50% - 10px);
     transform-origin: center bottom;
     /*transform:rotate(calc(-90deg + 0.1turn));*/
@@ -180,11 +241,11 @@ body {
 }
 
 .arrowBlack {
-    border-bottom-color: black;
+    border-bottom-color: #ecffed;
 }
 
 .arrowWhite{
-    border-bottom-color: white;
+    border-bottom-color: #bbbbbb;
     opacity:0;
 }
 
@@ -199,23 +260,12 @@ body {
     width: 15%;
     height: 30%;
     border-radius: 50%;
-    background:black;
+    background:#ecffed;
+    background-size: 20px 20px;
     position: absolute;
     left: calc(50% - 7.5%);
     /*z-index: 2;*/
     bottom: -15%;
-}
-
-.píeMiddleCircle {
-    width: 50%;
-    height: 100%;
-    border-radius: 50% 50% 0 0;
-    top: 50%;
-    left: 25%;
-    margin: 0 auto;
-    background: #a2a38a;
-    z-index:1;
-    position: absolute;
 }
 
 /*.pie-halfHider {*/
@@ -231,15 +281,23 @@ body {
     height: 200%;
     position: absolute;
     border-radius: 50%;
-    background-image: linear-gradient(to top, transparent 50%, #000 0);
-    /*transform: rotate(0.08turn);*/
-    /*animation-name: animateShadow;*/
-    /*animation-duration: 2s;*/
     opacity: 0.5;
     z-index:1;
+    transform:rotate(-90deg);
+}
+
+.pieShadow.black {
+    background-image: linear-gradient(to top, transparent 50%, #000 0);
 }
 
 
+.pieShadow.diff {
+    opacity: 0.6;
+    animation: breath;
+    animation-duration:10s;
+    animation-iteration-count: infinite;
+     background: conic-gradient(transparent 0deg,black 0deg, #000 30deg, transparent 30deg);
+ }
 
 @keyframes spinAround {
     0% {transform: rotate(0deg);}
@@ -271,4 +329,20 @@ body {
     0% {opacity:0; }
     50% {opacity:0;}
     100% {opacity:1;}
+}
+
+@keyframes flipCard {
+    0% {transform:rotate3d(0,1,0,90deg)}
+    25% {transform:rotate3d(0,1,0,-30deg)}
+    50% {transform:rotate3d(0,1,0,10deg)}
+    75% {transform:rotate3d(0,1,0,-3deg)}
+    100% {transform:rotate3d(0,1,0,0deg)}
+}
+
+@keyframes breath {
+    0% {opacity:0.05}
+    40% {opacity: 0.05}
+    50% {opacity: 0.7}
+    60% {opacity: 0.05}
+    100% {opacity:0.05}
 }

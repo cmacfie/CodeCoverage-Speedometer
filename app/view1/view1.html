@@ -1,82 +1,97 @@
 <!--<div class="container">-->
 <!--<div class="custom-container container"-->
 <!--<div class="row">-->
-<div id="mainContain">
-    <h1 id="title">Code Coverage</h1>
-    <div ng-repeat="repo in repos track by $index" class="metricContainer">
-        <div class="speedometerHolder">
-            <div class="arrowHolder">
-                <div class="arrow arrowWhite"></div>
+<!--<button class="btn" ng-click="change()">Change</button>-->
+<div style="text-align:center" class="container">
+    <div style="text-align:left" class="row">
+        <div class="col-md-7">
+        <h1 id="title">Code Coverage</h1></div>
+        <div class="col-md-7">
+            <h1 style="line-height:3em; text-align:right">Last Month</h1></div>
+    </div>
+    <div ng-repeat="i in [] | range:2">
+        <div id="metersRow" class="row">
+            <div class="col-md-2" ng-repeat="repo in get7Repos(i) track by $index ">
+                <div class="metricContainer">
+                    <div class="row" style="margin-bottom: 10px;font-size:25px; line-height:25px; height:50px;">
+                        <div class="col-md-14">{{repo.name}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="speedometerHolder">
+                            <div class="arrowHolder">
+                                <div class="arrow arrowWhite"></div>
+                            </div>
+                            <div class="arrowHolder">
+                                <div class="arrowCircle"></div>
+                                <div class="arrow arrowBlack"></div>
+                            </div>
+                            <div class="circleShadowHolder">
+                                <div id="shadowLeft" class="circleShadow"></div>
+                                <div id="shadowRight" class="circleShadow"></div>
+                            </div>
+                            <div class="pieHolder">
+                                <div class="pieShadow black"></div>
+                                <div class="pieShadow diff"></div>
+                                <div class="pie-halfHider"></div>
+                                <div class="pieMiddleCircle"></div>
+                                <!--<div class="red-pie"></div>-->
+                                <div class="gradient-pie"></div>
+                            </div>
+                        </div>
+
+                        <div class="textContainer">
+                            <!--<div class="textHolder"><h1 class="percent">{{repo.currProc}}</h1></div>-->
+                            <div class="row">
+                                <div class="col-md-14 mainPercent">{{repo.currProc}}%</div>
+                                <div div ng-style="setPercentCSS(repo)" class="col-md-14 changePercent">{{repo.currProc - repo.lastProc | limitTo:3}}%
+                                </div>
+                            </div>
+                            <div style="width:100%; height: 0px; border-bottom: 1px dashed white"></div>
+                            <div class="row"><h2>Latest Commit</h2></div>
+                            <div class="row"><h2>2018-05-01 14:20:12</h2></div>
+                            <div style="width:100%; height: 0px; border-bottom: 1px dashed white"></div>
+                            <div class="row"><h2>Coverage Change</h2></div>
+                            <div class="row"><h2>2018-05-01 14:20:12</h2></div>
+                            <div style="width:100%; height: 0px; border-bottom: 1px dashed white"></div>
+                            <!--<div ng-style="setPercentCSS(repo)" class="row">-->
+                            <!--<div style="text-align:right; font-size:0.4em" class="col-6">Change %</div>-->
+                            <!--<div  style="text-align:left; font-size:0.4em" class="col-6">5%</div>-->
+                            <!--</div>-->
+                            <!--<div class="row" style="margin-top: 5px;">-->
+                            <!--<div class="col-4">-->
+                            <!--<p>Latest Commit</p>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;<h2>{{repo.locCov}}</h2></div>&ndash;&gt;-->
+                            <!--<div ng-style="setPercentCSS(repo)"-->
+                            <!--class="col-4 ">-->
+                            <!--<p style="bottom:0; position:absolute" >Change</p></div>-->
+                            <!--&lt;!&ndash;<h2>{{repo.currProc - repo.lastProc | limitTo:3}}%</h2></div>&ndash;&gt;-->
+                            <!--<div class="col-4 alignRight">-->
+                            <!--<p>Latest Coverage Change</p>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="row" style="margin-top: 5px;">-->
+                            <!--<div class="col-4">-->
+                            <!--<h2>{{repo.locCov}}</h2></div>-->
+                            <!--<div ng-style="setPercentCSS(repo)"-->
+                            <!--class="col-4 ">-->
+                            <!--<h2>{{repo.currProc - repo.lastProc | limitTo:3}}%</h2></div>-->
+                            <!--<div class="col-4 alignRight">-->
+                            <!--<h1>{{repo.locTot}}</h1>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="arrowHolder">
-                <div class="arrowCircle"></div>
-                <div class="arrow arrowBlack"></div>
-            </div>
-            <div class="circleShadowHolder">
-                <div id="shadowLeft" class="circleShadow"></div>
-                <div id="shadowRight" class="circleShadow"></div>
-            </div>
-            <div class="pieHolder">
-                <div class="pieShadow"></div>
-                <div class="pie-halfHider"></div>
-                <div class="píeMiddleCircle"></div>
-                <div class="gradient-pie"></div>
-            </div>
-        </div>
-        <div class="textContainer">
-            <!--<div class="textHolder"><h1 class="percent">{{repo.currProc}}</h1></div>-->
-            <div class="row">
-                <div class="col-6 mainPercent">{{repo.currProc}}%</div>
-                <div div ng-style="getPercentColor(repo)" class="col-6 changePercent"><h2 style="font-size:30px;
-    line-height: 90px;">{{repo.currProc - repo.lastProc | limitTo:3}}%</h2></div>
-            </div>
-            <div class="textHolder repo"><h2 style=" margin-bottom:3px;">{{repo.name}}</h2></div>
-            <div style="width 100%; height: 0px; border-bottom: 1px dashed white"></div>
-            <div class="row">
-                <div style="text-align:right; font-size:0.6em" class="col-6">Latest Commit</div>
-                <div style="text-align:left; font-size:0.6em" class="col-6">2018-05-01 14:20:12</div>
-            </div>
-            <div style="width 100%; height: 0px; border-bottom: 1px dashed white"></div>
-            <div class="row">
-                <div style="text-align:right; font-size:0.6em" class="col-6">Latest Coverage Change</div>
-                <div style="text-align:left; font-size:0.6em" class="col-6">2018-05-01 14:20:12</div>
-            </div>
-            <!--<div ng-style="getPercentColor(repo)" class="row">-->
-            <!--<div style="text-align:right; font-size:0.4em" class="col-6">Change %</div>-->
-            <!--<div  style="text-align:left; font-size:0.4em" class="col-6">5%</div>-->
-            <!--</div>-->
-            <!--<div class="row" style="margin-top: 5px;">-->
-            <!--<div class="col-4">-->
-            <!--<p>Latest Commit</p>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;<h2>{{repo.locCov}}</h2></div>&ndash;&gt;-->
-            <!--<div ng-style="getPercentColor(repo)"-->
-            <!--class="col-4 ">-->
-            <!--<p style="bottom:0; position:absolute" >Change</p></div>-->
-            <!--&lt;!&ndash;<h2>{{repo.currProc - repo.lastProc | limitTo:3}}%</h2></div>&ndash;&gt;-->
-            <!--<div class="col-4 alignRight">-->
-            <!--<p>Latest Coverage Change</p>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<div class="row" style="margin-top: 5px;">-->
-            <!--<div class="col-4">-->
-            <!--<h2>{{repo.locCov}}</h2></div>-->
-            <!--<div ng-style="getPercentColor(repo)"-->
-            <!--class="col-4 ">-->
-            <!--<h2>{{repo.currProc - repo.lastProc | limitTo:3}}%</h2></div>-->
-            <!--<div class="col-4 alignRight">-->
-            <!--<h1>{{repo.locTot}}</h1>-->
-            <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
-</div>
-</div>
-<div class="row bottomText">
-    <div class="col-6">Data from</div>
-    <div class="col-6">Hej</div>
-</div>
+
+    <div class="row">
+        <div class="col-md-7">Data from</div>
+        <div class="col-md-7">Hej</div>
+    </div>
 </div>
 <!--</div>-->
 <!--</div>-->

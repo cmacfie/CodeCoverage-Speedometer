@@ -9,6 +9,18 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
+app.filter('range', function () {
+    return function (input, total) {
+        total = parseInt(total);
+
+        for (var i = 0; i < total; i++) {
+            input.push(i);
+        }
+
+        return input;
+    };
+});
+
 app.controller('View1Ctrl', function ($scope) {
 
     // var deg = 180;
@@ -17,32 +29,55 @@ app.controller('View1Ctrl', function ($scope) {
         {name: "apiculturist", currProc: 92.53, lastProc: 91.67, locCov: "1320", locTot: "3201"},
         {name: "la-vie", currProc: 54.02, lastProc: 52.15, locCov: "1320", locTot: "3201"},
         {name: "geo-server", currProc: 11.84, lastProc: 11.84, locCov: "1320", locTot: "3201"},
-        {name: "sense-client", currProc: 36.72, lastProc: 36.29, locCov: "1320", locTot: "3201"},
+        {name: "sense-client", currProc: 36.72, lastProc: 10.29, locCov: "1320", locTot: "3201"},
         {name: "sense-client/dev-hub", currProc: 45.26, lastProc: 45.26, locCov: "1320", locTot: "3201"},
         {name: "depghraph-service", currProc: 45.68, lastProc: 45.68, locCov: "1320", locTot: "3201"},
-        {name: "api-monitor-mashup", currProc: 68.5, lastProc: 82.72, locCov: "1000", locTot: "1923"},
-        {name: "apiculturist", currProc: 92.53, lastProc: 91.67, locCov: "1320", locTot: "3201"},
+        {name: "api-monitor-mashup", currProc: 50.5, lastProc: 82.72, locCov: "1000", locTot: "1923"},
+        {name: "apiculturist", currProc: 31.53, lastProc: 91.67, locCov: "1320", locTot: "3201"},
         {name: "la-vie", currProc: 54.02, lastProc: 52.15, locCov: "1320", locTot: "3201"},
         {name: "geo-server", currProc: 11.84, lastProc: 11.84, locCov: "1320", locTot: "3201"},
         {name: "sense-client", currProc: 36.72, lastProc: 36.29, locCov: "1320", locTot: "3201"},
         {name: "sense-client/dev-hub", currProc: 45.26, lastProc: 45.26, locCov: "1320", locTot: "3201"},
         {name: "depghraph-service", currProc: 45.68, lastProc: 45.68, locCov: "1320", locTot: "3201"},];
 
+
+    $scope.get7Repos = function (index) {
+        return $scope.repos.slice(index * 7, index * 7 + 7);
+    }
+
+    $scope.change = function () {
+        $scope.repos = [{name: "api-monitor-mashup", currProc: 50.5, lastProc: 82.72, locCov: "1000", locTot: "1923"},
+            {name: "apiculturist", currProc: 50.53, lastProc: 91.67, locCov: "1320", locTot: "3201"},
+            {name: "la-vie", currProc: 50.02, lastProc: 52.15, locCov: "1320", locTot: "3201"},
+            {name: "geo-server", currProc: 11.84, lastProc: 11.84, locCov: "1320", locTot: "3201"},
+            {name: "sense-client", currProc: 36.72, lastProc: 36.29, locCov: "1320", locTot: "3201"},
+            {name: "sense-client/dev-hub", currProc: 45.26, lastProc: 45.26, locCov: "1320", locTot: "3201"},
+            {name: "depghraph-service", currProc: 45.68, lastProc: 45.68, locCov: "1320", locTot: "3201"},
+            {name: "api-monitor-mashup", currProc: 68.5, lastProc: 82.72, locCov: "1000", locTot: "1923"},
+            {name: "apiculturist", currProc: 92.53, lastProc: 91.67, locCov: "1320", locTot: "3201"},
+            {name: "la-vie", currProc: 54.02, lastProc: 52.15, locCov: "1320", locTot: "3201"},
+            {name: "geo-server", currProc: 11.84, lastProc: 11.84, locCov: "1320", locTot: "3201"},
+            {name: "sense-client", currProc: 36.72, lastProc: 36.29, locCov: "1320", locTot: "3201"},
+            {name: "sense-client/dev-hub", currProc: 45.26, lastProc: 45.26, locCov: "1320", locTot: "3201"},
+            {name: "depghraph-service", currProc: 45.68, lastProc: 45.68, locCov: "1320", locTot: "3201"},];
+        // console.log($scope.repos);
+        setUpLook(7);
+    }
+
     // $scope.randNumbers = [];
-    $scope.getPercentColor = function (repo) {
+    $scope.setPercentCSS = function (repo) {
         var res = repo.currProc - repo.lastProc;
         // console.log(res);
         if (res > 1) {
-            return {"color": "yellowgreen"};
+            return {"color": "yellowgreen", 'font-size': 30+res/100*30 + 'px'};
         } else if (res < -1) {
-            return {"color": "#da001a"};
+            return {"color": "#da001a", 'font-size': 30-res/100*30 + 'px'};
         } else {
-            return {"color": "yellow"};
+            return {"color": "yellow", 'font-size': 30-res/100*30 + 'px'};
         }
     }
 
     function makeAnimationKeyframes(index) {
-        // console.log($scope.randNumbers)
         var repo = $scope.repos[index];
         var arrowDeg = -90 + repo.currProc / 100 * 180;
         $.keyframe.define([{
@@ -77,9 +112,11 @@ app.controller('View1Ctrl', function ($scope) {
 
 
     function setUpAnimation() {
-        $('.mainPercent').each(function () {
-            $(this).prop('Counter', 0).animate({
-                Counter: $(this).text()
+        $('.mainPercent').each(function (index) {
+            var prevProc = parseFloat($(this).text().slice(0, $(this).text().length - 1));
+            // console.log($scope.repos[index].currProc, prevProc);
+            $(this).prop('Counter', (prevProc === $scope.repos[index].currProc ? 0 : prevProc)).animate({
+                Counter: $scope.repos[index].currProc
             }, {
                 duration: 1500,
                 easing: 'swing',
@@ -95,7 +132,7 @@ app.controller('View1Ctrl', function ($scope) {
             $(this).css('animation-delay', Math.floor(Math.random() * 60) + 's');
         });
 
-        $(".pieShadow").each(function (index) {
+        $(".pieShadow.black").each(function (index) {
             makeAnimationKeyframes(index)
             // console.log(this, index);
             $(this).playKeyframe(
@@ -122,19 +159,32 @@ app.controller('View1Ctrl', function ($scope) {
     var deferred = $injector.get("$q");
 
     var setWidth = function (divsPerRow) {
-        var newWidth = $(window).width() / divsPerRow;
-        var origWidth = 350;
-        console.log("Window", $(window).width(), "newWidth", newWidth, newWidth * divsPerRow);
-        var scale = (newWidth / origWidth);
-        // console.log(scale);
-        $('.metricContainer').css({
-            'transform': 'scale(' + scale * 0.9 + ')',
-            'margin': -(origWidth - newWidth) / 2 - 5 + 'px',
-            // 'margin-right': -(origWidth-newWidth)/2-5+ 'px',
-        });
-        $('.bottomText').css({
-            'margin': -((origWidth - newWidth) / 2 - 5) + 'px'
-        });
+        // if ($("#metersRow").width() === 1140) {
+        //     // $("#metersRow").css('width', $(window).width()*0.8 + 'px');
+        //     // $("#metersRow").css('margin-left', -$(window).width()*0.1 + 'px');
+        //     $(".container").css('width', $(window).width() * 0.9 + 'px');
+        //     $(".container").css('max-width', $(window).width() * 0.9 + 'px');
+        //     // $(".container").css('margin-left', -$(window).width()*0.1 + 'px');
+        // }
+        // // } else {
+        // var newWidth = $("#metersRow").width() / divsPerRow;
+        // var origWidth = 350;
+        // console.log("Window", $("#metersRow"), "newWidth", newWidth, newWidth * divsPerRow);
+        // var scale = (newWidth / origWidth);
+        // console.log(scale*newWidth)
+        // // console.log(scale);
+        // $('.metricContainer').css({
+        //     'transform': 'scale(' + scale * 0.9 + ')',
+        //     // 'width': newWidth + 'px',
+        //     // 'margin': '0px',
+        //     'margin-right': -(origWidth - newWidth) / 2 - 5 + scale*0.1 + 'px'
+        //     // 'margin-left:':
+        //     // 'margin-right': -(origWidth-newWidth)/2-5+ 'px',
+        // });
+        // }
+        // $('.bottomText').css({
+        //     'margin': -((origWidth - newWidth) / 2 - 5) + 'px'
+        // });
         // console.log(width / 7)
         // var metricContainer = $(".metricContainer");
         // var padding = metricContainer.css('padding-left').slice(0, metricContainer.css('padding-left').length - 2) << 1;
@@ -162,8 +212,23 @@ app.controller('View1Ctrl', function ($scope) {
     //     }
     // }
 
+    function setUpCSS() {
+        $('.pieShadow.diff').each(function (index) {
+            var repo = $scope.repos[index];
+            var startDeg = repo.currProc / 100 * 180;
+            var stopDeg = repo.lastProc / 100 * 180;
+            if(startDeg > stopDeg){
+                let temp = startDeg;
+                startDeg = stopDeg;
+                stopDeg = temp;
+            }
+            var color = repo.currProc - repo.lastProc > 0 ? 'green' : 'red';
+            console.log(color, startDeg, stopDeg, this);
+            $(this).css('background', 'conic-gradient(transparent ' + startDeg + 'deg,' + color + ' ' + startDeg + 'deg, ' + color + ' ' + stopDeg + 'deg, transparent ' + stopDeg + 'deg)');
+        });
+    }
 
-    function setUpCSS(objsPerRow) {
+    function setUpLook(objsPerRow) {
         var renderedObjects = [];
         var p1 = new Promise(function (resolve, reject) {
             var checkExist = setInterval(function () {
@@ -181,6 +246,14 @@ app.controller('View1Ctrl', function ($scope) {
                 }
             }, 100);
         });
+        var p3 = new Promise(function (resolve, reject) {
+            var checkExist = setInterval(function () {
+                if ($('.pieShadow.red').length >= objsPerRow) {
+                    resolve("Found");
+                    clearInterval(checkExist);
+                }
+            }, 100);
+        });
         renderedObjects.push(p1);
         renderedObjects.push(p2);
         deferred.all(renderedObjects).then(function () {
@@ -189,11 +262,12 @@ app.controller('View1Ctrl', function ($scope) {
             // setWidth($scope.numOfObjs);
             setUpAnimation();
             setWidth(objsPerRow)
+            setUpCSS();
         });
     }
 
     // console.log($scope.repos.length);
-    setUpCSS(7);
+    setUpLook(7);
     // var p1 = new Promise(function(resolve, reject){
     //     var checkExist = setInterval(function() {
     //         if ($('.arrow').length > 3) {
