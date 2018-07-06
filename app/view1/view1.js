@@ -23,9 +23,10 @@ app.filter('range', function () {
 
 app.controller('View1Ctrl', function ($scope) {
 
-    // var deg = 180;
+    const cardsPerRow = 7;
+    $scope.cardsPerRow = cardsPerRow;
 
-    $scope.repos = [{name: "api-monitor-mashup", currProc: 68.5, lastProc: 82.72, locCov: "1000", locTot: "1923"},
+    var repo1 = [{name: "api-monitor-mashup", currProc: 68.5, lastProc: 82.72, locCov: "1000", locTot: "1923"},
         {name: "apiculturist", currProc: 92.53, lastProc: 91.67, locCov: "1320", locTot: "3201"},
         {name: "la-vie", currProc: 54.02, lastProc: 52.15, locCov: "1320", locTot: "3201"},
         {name: "geo-server", currProc: 11.84, lastProc: 11.84, locCov: "1320", locTot: "3201"},
@@ -39,10 +40,62 @@ app.controller('View1Ctrl', function ($scope) {
         {name: "sense-client", currProc: 36.72, lastProc: 36.29, locCov: "1320", locTot: "3201"},
         {name: "sense-client/dev-hub", currProc: 45.26, lastProc: 45.26, locCov: "1320", locTot: "3201"},
         {name: "depghraph-service", currProc: 45.68, lastProc: 45.68, locCov: "1320", locTot: "3201"},];
+    var repo2 = [{name: "api-monitor-mashup", currProc: 34.5, lastProc: 53.72, locCov: "1000", locTot: "1923"},
+        {name: "apiculturist", currProc: 64.53, lastProc: 53.67, locCov: "1320", locTot: "3201"},
+        {name: "la-vie", currProc: 2.02, lastProc: 1.15, locCov: "1320", locTot: "3201"},
+        {name: "geo-server", currProc: 45.84, lastProc: 53.84, locCov: "1320", locTot: "3201"},
+        {name: "sense-client", currProc: 21.72, lastProc: 53.29, locCov: "1320", locTot: "3201"},
+        {name: "sense-client/dev-hub", currProc: 34.26, lastProc: 43.26, locCov: "1320", locTot: "3201"},
+        {name: "depghraph-service", currProc: 54.68, lastProc: 31.68, locCov: "1320", locTot: "3201"},
+        {name: "api-monitor-mashup", currProc: 31.5, lastProc: 4.72, locCov: "1000", locTot: "1923"},
+        {name: "apiculturist", currProc: 34.53, lastProc: 53.67, locCov: "1320", locTot: "3201"},
+        {name: "la-vie", currProc: 13.02, lastProc: 43.15, locCov: "1320", locTot: "3201"},
+        {name: "geo-server", currProc: 76.84, lastProc: 13.84, locCov: "1320", locTot: "3201"},
+        {name: "sense-client", currProc: 65.72, lastProc: 35.29, locCov: "1320", locTot: "3201"},
+        {name: "sense-client/dev-hub", currProc: 42.26, lastProc: 43.26, locCov: "1320", locTot: "3201"},
+        {name: "depghraph-service", currProc: 54.68, lastProc: 13.68, locCov: "1320", locTot: "3201"},];
+
+    $scope.repos = repo2;
 
 
     $scope.get7Repos = function (index) {
-        return $scope.repos.slice(index * 7, index * 7 + 7);
+        return $scope.repos.slice(index * cardsPerRow, index * cardsPerRow + cardsPerRow);
+    }
+
+    var dates = ['Today', 'Last Week', 'Last Month', 'Last Year'];
+    var lastDeg = -90;
+
+    changeDateText(0)
+    flipCardAnimation()
+
+    function flipCardAnimation(){
+        setTimeout(function(){
+            $('.metricContainer').addClass('pauseAnimation');
+            setTimeout(function(){
+                $('.metricContainer').removeClass('pauseAnimation');
+                setTimeout(function(){
+                    $scope.repos = $scope.repos === repo1 ? repo2 : repo1;
+                    console.log($scope.repos);
+                    setUpLook(cardsPerRow)
+                    flipCardAnimation();
+                },1500);
+            },8000);
+        },1500);
+    }
+
+    function changeDateText(index){
+        $('.compareDate').empty();
+        $('.compareDate').append('<h1>'+dates[index%dates.length]+'</h1>');
+        $('.compareDate h1').addClass('slideIn');
+        setTimeout(function(){
+            $('.compareDate h1').removeClass('slideIn');
+        },2000);
+        setTimeout(function(){
+            $('.compareDate h1').addClass('foldAway');
+            setTimeout(function(){
+                changeDateText(++index);
+            },500)
+        },10000);
     }
 
     $scope.change = function () {
@@ -61,13 +114,17 @@ app.controller('View1Ctrl', function ($scope) {
             {name: "sense-client/dev-hub", currProc: 45.26, lastProc: 45.26, locCov: "1320", locTot: "3201"},
             {name: "depghraph-service", currProc: 45.68, lastProc: 45.68, locCov: "1320", locTot: "3201"},];
         // console.log($scope.repos);
-        setUpLook(7);
+        setUpLook(cardsPerRow);
     }
 
     // $scope.randNumbers = [];
-    $scope.setPercentCSS = function (repo) {
-        var res = repo.currProc - repo.lastProc;
+
+
+    function setPercentCSS(index) {
+        // console.log(index, i);
+        var res = $scope.repos[index].currProc - $scope.repos[index].lastProc;
         // console.log(res);
+        // var res = currRepo - lastRepo;
         if (res > 1) {
             return {"color": "yellowgreen", 'font-size': 30 + res / 100 * 30 + 'px'};
         } else if (res < -1) {
@@ -88,7 +145,7 @@ app.controller('View1Ctrl', function ($scope) {
         ]);
         $.keyframe.define([{
             name: 'animateArrow' + index,
-            '0%': {'transform': 'rotate(' + (-90) + 'deg)'},
+            '0%': {'transform': 'rotate(' + (lastDeg) + 'deg)'},
             '10%': {'transform': 'rotate(' + (arrowDeg + arrowDeg * 0.2) + 'deg)'},
             '20%': {'transform': 'rotate(' + (arrowDeg + arrowDeg * -0.2) + 'deg)'},
             '30%': {'transform': 'rotate(' + (arrowDeg + arrowDeg * 0.1) + 'deg)'},
@@ -98,6 +155,7 @@ app.controller('View1Ctrl', function ($scope) {
             '100%': {'transform': 'rotate(' + (arrowDeg) + 'deg)'}
         }
         ]);
+        lastDeg = arrowDeg;
         $.keyframe.define([{
             name: 'animateArrowWhite' + index,
             '0%': {'opacity': '0.6', 'transform': 'rotate(' + (-90 + repo.currProc / 100 * 180) + 'deg)'},
@@ -124,6 +182,15 @@ app.controller('View1Ctrl', function ($scope) {
                     $(this).text(Math.ceil(now) + '%');
                 }
             });
+        });
+        $('.changePercent').each(function (index){
+            var diff = $scope.repos[index].currProc - $scope.repos[index].lastProc + "";
+            if(diff.charAt(0) !== "-"){
+                diff = '+' + diff;
+            }
+            diff = diff.length < 4 ? diff + '.00' : diff;
+            console.log(diff);
+            $(this).text(diff.slice(0,6) + '%')
         });
         $('.shineText').each(function (index) {
             $(this).css('animation-delay', Math.floor(Math.random() * 60) + 's');
@@ -226,6 +293,13 @@ app.controller('View1Ctrl', function ($scope) {
             // console.log(color, startDeg, stopDeg, this);
             $(this).css('background', 'conic-gradient(transparent ' + startDeg + 'deg,' + color + ' ' + startDeg + 'deg, ' + color + ' ' + stopDeg + 'deg, transparent ' + stopDeg + 'deg)');
         });
+        $('.changePercent').each(function(index){
+            console.log(setPercentCSS(index));
+           $(this).css(setPercentCSS(index));
+        });
+        $('.metricContainer').each(function(index){
+           $(this).css(getGradientCSS(index));
+        });
     }
 
     function setUpLook(objsPerRow) {
@@ -266,9 +340,9 @@ app.controller('View1Ctrl', function ($scope) {
         });
     }
 
-    $scope.getGradientCSS = function (repo) {
-        console.log(repo);
-        var diff = repo.currProc - repo.lastProc;
+    function getGradientCSS(index) {
+        // console.log(repo);
+        var diff = $scope.repos[index].currProc - $scope.repos[index].lastProc;
         var color1 = 'transparent';
         var color2 = 'transparent';
         if (diff < -1.0) {
@@ -279,12 +353,13 @@ app.controller('View1Ctrl', function ($scope) {
             color2 = 'rgba(154, 205, 50,0.2)';
         }
         // let color = diff > 1 ? 'green' : (diff < 1 ? 'red' : 'transparent');
-        console.log(diff, color1);
-        return {'background': 'linear-gradient(' +color1 + ',' + color2 + '10%, transparent 30%, transparent 100%)'}
+        // console.log(diff, color1);
+        console.log({'background': 'linear-gradient(' +color1 + ',' + color2 + ' 10%, transparent 30%, transparent 100%)'});
+        return {'background': 'linear-gradient(' +color1 + ',' + color2 + ' 10%, transparent 30%, transparent 100%)'}
     }
 
     // console.log($scope.repos.length);
-    setUpLook(7);
+    setUpLook(cardsPerRow);
     // var p1 = new Promise(function(resolve, reject){
     //     var checkExist = setInterval(function() {
     //         if ($('.arrow').length > 3) {

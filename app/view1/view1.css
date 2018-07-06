@@ -12,11 +12,13 @@ body {
     /*width:1400px;*/
 /*}*/
 
+body {
+    font-family: 'Quicksand', sans-serif;
+}
 
 .textContainer {
     display:inline-block;
     width:100%;
-    font-family: 'Quicksand', sans-serif;
     text-align: center;
     font-size: 30px;
     color: white;
@@ -50,11 +52,42 @@ body {
     /*animation-duration: 1s;*/
 }
 
+.compareDate {
+    overflow:hidden;
+    height:0%;
+    width:100%;
+}
+
+.shadow{
+    top:50%;
+    transform:translateY(-50%);
+    height:6em;
+    width:20em;
+    left:calc(100% - 20em);
+    position:absolute;
+    /*background:red;*/
+    box-shadow: 3px 0px 1px -2px rgba(0, 0, 0, 0.41) !important;
+}
+
+.compareDate h1{
+    margin-right:25px;
+    line-height:3em;
+    text-align:right;
+    /*font-family: 'Exo', sans-serif;*/
+    font-size:3em;
+}
+
+.slideIn {
+    animation-name:slideIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
 .changePercent {
     line-height: 60px;
     text-align:center;
     font-weight: bold;
-    margin-bottom:20px;
+    /*margin-bottom:20px;*/
     animation-name: changePercentAnimation;
     animation-duration: 2s;
     /*animation-delay: 1.5s;*/
@@ -156,6 +189,16 @@ body {
     background: inherit;
 }
 
+.flipCardIn {
+    animation-name: flipCard;
+    animation-duration: 3s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+.pauseAnimation {
+    animation-play-state: paused;
+}
 
 .metricContainer {
     /*min-width:350px;*/
@@ -166,9 +209,6 @@ body {
     margin:5px;
     /*transform:rotate3d(0,1,0,90deg);*/
     /*width:350px;*/
-    animation-name: flipCard;
-    animation-duration: 1.5s;
-    animation-fill-mode: both;
     /*transform:scale(0.6);*/
     /*margin:-50px;*/
     /*max-width:460px;*/
@@ -279,6 +319,12 @@ body {
 /*background-image: linear-gradient(to bottom, transparent 50%, inherit);*/
 /*}*/
 
+.foldAway {
+    animation-name:foldAway;
+    animation-duration:0.5s;
+    transform:rotate3d(1,0,0,90deg)
+}
+
 .pieShadow {
     width: 100%;
     height: 200%;
@@ -302,6 +348,7 @@ body {
     animation-iteration-count: infinite;
      background: conic-gradient(transparent 0deg,black 0deg, #000 30deg, transparent 30deg);
  }
+
 
 @keyframes spinAround {
     0% {transform: rotate(0deg);}
@@ -336,11 +383,17 @@ body {
 }
 
 @keyframes flipCard {
-    0% {transform:rotate3d(0,1,0,90deg)}
-    25% {transform:rotate3d(0,1,0,-30deg)}
-    50% {transform:rotate3d(0,1,0,10deg)}
-    75% {transform:rotate3d(0,1,0,-3deg)}
-    100% {transform:rotate3d(0,1,0,0deg)}
+    0% {opacity:0; transform:rotate3d(0,1,0,90deg)}
+    5% {opacity:1;}
+    12.5% {transform:rotate3d(0,1,0,-30deg)}
+    25% {transform:rotate3d(0,1,0,10deg)}
+    37.5% {transform:rotate3d(0,1,0,-3deg)}
+    50% {transform:rotate3d(0,1,0,0deg)}
+    67.5% {transform:rotate3d(0,1,0,-3deg)}
+    75% {transform:rotate3d(0,1,0,10deg)}
+    87.5% {transform:rotate3d(0,1,0,-30deg)}
+    95% {opacity:1}
+    100% {opacity:0; transform:rotate3d(0,1,0,90deg)}
 }
 
 @keyframes breath {
@@ -353,4 +406,14 @@ body {
     45% {opacity: 0.5}
     50% {opacity: 0.05}
     100% {opacity:0}
+}
+
+@keyframes slideIn {
+    0% {transform:translateX(30%)}
+    100% {transform:translateX(0%)}
+}
+
+@keyframes foldAway {
+    0% {opacity: 1; transform:rotate3d(1,0,0,0deg)}
+    100% {opacity: 0; transform:rotate3d(1,0,0,90deg)}
 }

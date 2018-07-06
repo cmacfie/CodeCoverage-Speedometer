@@ -5,14 +5,18 @@
 <div style="text-align:center" class="container">
     <div style="text-align:left" class="row">
         <div class="col-md-7">
-        <h1 id="title">Code Coverage</h1></div>
+            <h1 id="title">Code Test Coverage</h1></div>
         <div class="col-md-7">
-            <h1 style="line-height:3em; text-align:right">Last Month</h1></div>
+            <div class="shadow"></div>
+            <div class="compareDate">
+                <h1>Last Month</h1>
+            </div>
+        </div>
     </div>
     <div ng-repeat="i in [] | range:2">
         <div id="metersRow" class="row">
             <div class="col-md-2" ng-repeat="repo in get7Repos(i) track by $index ">
-                <div  ng-style="getGradientCSS(repo)" class="metricContainer">
+                <div class="metricContainer flipCardIn">
                     <div class="row" style="margin-bottom: 10px;font-size:25px; line-height:25px; height:50px;">
                         <div class="col-md-14">{{repo.name}}</div>
                     </div>
@@ -42,9 +46,8 @@
                         <div class="textContainer">
                             <!--<div class="textHolder"><h1 class="percent">{{repo.currProc}}</h1></div>-->
                             <div class="row">
-                                <div class="col-md-14 mainPercent shineText">{{repo.currProc}}%</div>
-                                <div div ng-style="setPercentCSS(repo)" class="col-md-14 changePercent">{{repo.currProc - repo.lastProc | limitTo:3}}%
-                                </div>
+                                <div class="col-md-14 mainPercent shineText"></div>
+                                <div class="col-md-14 changePercent"></div>
                             </div>
                             <div style="width:100%; height: 0px; border-bottom: 1px dashed white"></div>
                             <div class="row"><h2>Latest Commit</h2></div>
@@ -86,11 +89,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-7">Data from</div>
-        <div class="col-md-7">Hej</div>
     </div>
 </div>
 <!--</div>-->
