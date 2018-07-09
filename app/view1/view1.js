@@ -75,8 +75,8 @@ app.controller('View1Ctrl', function ($scope) {
                 $('.metricContainer').removeClass('pauseAnimation');
                 setTimeout(function(){
                     $scope.repos = $scope.repos === repo1 ? repo2 : repo1;
-                    console.log($scope.repos);
-                    setUpLook(cardsPerRow)
+                    // console.log($scope.repos);
+                    setUpLook(cardsPerRow);
                     flipCardAnimation();
                 },1500);
             },8000);
@@ -294,7 +294,6 @@ app.controller('View1Ctrl', function ($scope) {
             $(this).css('background', 'conic-gradient(transparent ' + startDeg + 'deg,' + color + ' ' + startDeg + 'deg, ' + color + ' ' + stopDeg + 'deg, transparent ' + stopDeg + 'deg)');
         });
         $('.changePercent').each(function(index){
-            console.log(setPercentCSS(index));
            $(this).css(setPercentCSS(index));
         });
         $('.metricContainer').each(function(index){
