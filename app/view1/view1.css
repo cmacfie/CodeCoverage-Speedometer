@@ -1,5 +1,6 @@
 body {
    background-color: rgb(43, 43, 43);
+    overflow:hidden;
 }
 
 /*Override bootstrap*/
@@ -190,10 +191,10 @@ body {
 }
 
 .flipCardIn {
-    animation-name: flipCard;
-    animation-duration: 3s;
-    animation-fill-mode: both;
-    animation-iteration-count: infinite;
+    /*animation-name: flipCard;*/
+    /*animation-duration: 3s;*/
+    /*animation-fill-mode: both;*/
+    /*animation-iteration-count: infinite;*/
 }
 
 .pauseAnimation {
@@ -286,6 +287,7 @@ body {
 .arrowBlack {
     border-bottom-color: #ecffed;
 }
+
 
 .arrowWhite{
     border-bottom-color: #bbbbbb;
@@ -409,7 +411,7 @@ body {
 }
 
 @keyframes slideIn {
-    0% {transform:translateX(30%)}
+    0% {transform:translateX(100%)}
     100% {transform:translateX(0%)}
 }
 
